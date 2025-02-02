@@ -1,0 +1,29 @@
+.input-with-image {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 600px; /* Adjust the max-width as needed */
+}
+
+.animated-textarea {
+  width: 100%;
+  padding: 12px 40px 12px 12px; /* Increase padding on the right for icon space */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box; /* Ensure padding is included in the width calculation */
+}
+
+.ai-search-btn-new {
+  position: absolute;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.ai-search-btn-new .fa-search {
+  font-size: 1.2em;
+  color: #666;
+}
