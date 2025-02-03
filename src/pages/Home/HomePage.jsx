@@ -1,6 +1,7 @@
 import "./HomePage.css";
 import React, { useEffect, useState } from "react";
 import { fetchProducts } from "../../api/api";
+import TermsModal from "../../components/TermsModal/TermsModal.jsx"; // Import TermsModal
 import defaultImage from "../../assets/icons/06.jpg"; 
 
 
@@ -8,7 +9,7 @@ const HomePage = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
+  const [isModalOpen, setModalOpen] = useState(false); // Modal state
   useEffect(() => {
     const loadProducts = async () => {
       try {
@@ -51,6 +52,7 @@ const HomePage = () => {
             "image": "https://via.placeholder.com/150",
             "oldPrice": 80,
             "price": 70,
+            "isInCart":true,
             "discount": 12,
             "ratings": 4.2
           },
@@ -77,11 +79,19 @@ const HomePage = () => {
     };
     loadProducts();
   }, []);
+    const openTermsModal = () => {
+      setModalOpen(true);
+    };
+  
+    const closeTermsModal = () => {
+      setModalOpen(false);
+    };
+  
 
   return (
     <div className="homepage-container">
       {/* Carousel Section */}
-      <div id="carouselExampleIndicators" className="carousel slide" data-bs-ride="carousel">
+      {/* <div id="carouselExampleIndicators" className="carousel slide" data-bs-ride="carousel">
         <div className="carousel-inner">
           <div className="carousel-item active">
             <img src="/assets/banner1.jpg" className="d-block w-100" alt="Banner 1" />
@@ -101,11 +111,11 @@ const HomePage = () => {
           <span className="carousel-control-next-icon" aria-hidden="true"></span>
           <span className="visually-hidden">Next</span>
         </button>
-      </div>
+      </div> */}
 
       {/* Categories Section */}
       <section className="categories-section mt-18">
-        <h2 className="section-title"><i className="fas fa-th-large"></i> Explore Categories</h2>
+        {/* <h4 className="section-title"><i className="fas fa-th-large"></i> Explore Categories</h4> */}
         <div className="categories-scroll-container">
           <div className="category-card">
             <h5 className="text-white">Dress</h5>
@@ -140,71 +150,6 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* Products Section */}
-      {/* <section className="products-section mt-5">
-  <h2 className="section-title">
-    <i className="fas fa-star"></i> Featured Products
-  </h2>
-  <div className="row">
-    {loading ? (
-      <p className="text-center">Loading products...</p>
-    ) : error ? (
-      <p className="text-center text-danger">{error}</p>
-    ) : products.length > 0 ? (
-      products.map((product) => (
-        <div className="col-6 col-md-3 mb-4" key={product.id}>
-          <div className="product-card text-center p-3 shadow-sm">
-            <img
-              src={ defaultImage}
-              alt={product.name}
-              className="product-image mb-2"
-            />
-            <h4 className="product-name">{product.name}</h4>
-            <p className="product-brand">
-              <i className="fas fa-tag"></i> Brand: {product.brand || "N/A"}
-            </p>
-            <p className="product-desc">
-              {product.description
-                ? product.description.length > 50
-                  ? product.description.substring(0, 50) + "..."
-                  : product.description
-                : "No description available."}
-            </p>
-            <p className="product-price">
-              {product.oldPrice && (
-                <span className="old-price">₹{product.oldPrice}</span>
-              )}{" "}
-              <strong>₹{product.price}</strong>
-            </p>
-            {product.discount > 0 && (
-              <p className="discount">
-                <i className="fas fa-percentage"></i> {product.discount}% OFF
-              </p>
-            )}
-            {product.ratings && (
-              <p className="ratings" style={{color:"black"}}>
-                <i className="fas fa-star text-warning"></i> {product.ratings}/5
-              </p>
-            )}
-            <p className={`stock-status ${product.stock > 0 ? "text-success" : "text-danger"}`}>
-              <i className="fas fa-box"></i> {product.stock > 0 ? "In Stock" : "Out of Stock"}
-            </p>
-            <div className="d-flex justify-content-between">
-              <button className="add-to-cart-btn btn btn-primary w-50 me-1">
-                <i className="fas fa-shopping-cart"></i> Add to Cart
-              </button>
-              <button className="buy-now-btn btn btn-success w-50">
-                <i className="fas fa-bolt"></i> Buy Now
-              </button>
-            </div>
-          </div>
-        </div>
-      ))
-    ) : (
-      <p className="text-center">No products available.</p>
-    )}
-  </div>
-</section> */}
 
 <section className="products-section mt-5">
   <h2 className="section-title mb-4 text-center">
@@ -296,7 +241,7 @@ const HomePage = () => {
             <div className="actions d-flex justify-content-between">
               {product.isInCart ? (
                 <button className="btn btn-secondary w-100" disabled>
-                  <i className="fas fa-check-circle"></i> Already in Cart
+                  <i className="fas fa-check-circle"></i> Cart
                 </button>
               ) : (
                 <button
@@ -324,12 +269,22 @@ const HomePage = () => {
 
       {/* About Us Section */}
       <section className="about-us-section mt-5">
-        <h2 className="section-title"><i className="fas fa-info-circle"></i> About Us</h2>
+        <h2 className="section-title">
+          <i className="fas fa-info-circle"></i> About Us
+        </h2>
         <p>
           We provide high-quality groceries and clothing at the best prices. Our mission is to bring convenience and
           quality to your doorstep. Shop with us for a seamless and enjoyable shopping experience.
         </p>
+        <p>
+          <a href="#!" onClick={openTermsModal} className="terms-link">
+            📜 View Terms & Conditions
+          </a>
+        </p>
       </section>
+
+      {/* Terms & Conditions Modal */}
+      <TermsModal isOpen={isModalOpen} onClose={closeTermsModal} />
     </div>
   );
 };

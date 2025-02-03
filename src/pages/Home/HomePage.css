@@ -2,12 +2,7 @@
     padding: 20px;
   }
   
-  .section-title {
-    text-align: center;
-    margin-bottom: 20px;
-    font-size: 24px;
-    color: #1B1F3B;
-  }
+
   
   .category-card, .product-card {
     text-align: center;
@@ -102,7 +97,7 @@
   .section-title {
     text-align: center;
     margin-bottom: 20px;
-    font-size: 24px;
+    font-size: 20px;
     font-weight: bold;
     color: #1B1F3B;
   }
@@ -187,13 +182,7 @@
     padding: 20px;
     background-color: #f9f9f9;
   }
-  
-  .section-title {
-    text-align: center;
-    font-size: 24px;
-    color: #1B1F3B;
-    margin-bottom: 20px;
-  }
+
   
   .product-card {
     background: #fff;

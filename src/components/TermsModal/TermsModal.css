@@ -1,0 +1,89 @@
+/* TermsModal.css */
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #020000; /* Solid black background for overlay */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fadeIn 0.5s ease; /* Animation for overlay fade-in */
+  }
+  
+  .modal-content {
+    background-color: #FFFFFF; /* Solid pure white background */
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 600px;
+    width: 100%;
+    color: #fcf5f5; /* Text color set to black for contrast */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    animation: scaleIn 0.3s ease-out; /* Animation for scaling in modal content */
+  }
+  
+  h3 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-align: center;
+    color: #f8f3f3; /* Dark color for the heading */
+  }
+  
+  .terms-list {
+    margin-bottom: 20px;
+  }
+  
+  .terms-list ul {
+    list-style-type: decimal;
+    padding-left: 20px;
+  }
+  
+  .terms-list li {
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #ddd0d0; /* Ensure list items have a dark color */
+  }
+  
+  .close-btn {
+    display: block;
+    width: 100%;
+    background-color: #FF6B35; /* Sunset Orange */
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .close-btn:hover {
+    background-color: #FF4F1F; /* Darker Sunset Orange */
+  }
+  
+  /* Animation for fading in the modal overlay */
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  /* Animation for scaling in modal content */
+  @keyframes scaleIn {
+    0% {
+      transform: scale(0.8);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
