@@ -1,70 +1,75 @@
 import React, { useState } from "react";
 import { Navbar, Nav, Container, Badge } from "react-bootstrap";
-import AnimatedTextArea from "../components/AnimatedTextArea/AnimateTextArea"; // Import Search Component
-import { FaShoppingCart } from "react-icons/fa"; // Cart Icon
+import { Link } from "react-router-dom"; // Use Link for better routing
+import AnimatedTextArea from "../components/AnimatedTextArea/AnimateTextArea";
+import { FaShoppingCart } from "react-icons/fa";
 
 const NavbarComponent = ({ openTermsModal, cartItems }) => {
   const [searchQuery, setSearchQuery] = useState("");
 
   const handleSearch = () => {
     console.log("Searching for:", searchQuery);
-    // Add API call or routing logic here for searching
   };
 
   return (
-    <Navbar bg="dark" variant="dark" expand="lg">
+    <Navbar bg="dark" variant="dark" expand="lg" className="py-3 shadow-sm">
       <Container>
-        <Navbar.Brand href="/" style={{ color: "white" }} className="mx-1">
-          🛍 E-Shop
+        {/* Brand Logo */}
+        <Navbar.Brand as={Link} to="/" className="text-white fw-bold fs-4">
+          🛍 DailyMart
         </Navbar.Brand>
 
-        <Nav className="mx-auto">
-          <AnimatedTextArea
-            value={searchQuery} // Bind searchQuery to AnimatedTextArea
-            setQuery={setSearchQuery}
-            onEnterPress={handleSearch}
-          />
-        </Nav>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          {/* Center Search Bar */}
+          <Nav className="mx-auto">
+            <AnimatedTextArea
+              value={searchQuery}
+              setQuery={setSearchQuery}
+              onEnterPress={handleSearch}
+            />
+          </Nav>
 
-        <Nav>
-          <Nav.Link
-            as="span"
-            className="mx-1 terms-link"
-            onClick={openTermsModal}
-            style={{ color: "white", cursor: "pointer" }}
-          >
-            📜 Terms & Conditions
-          </Nav.Link>
+          {/* Right-Side Menu */}
+          <Nav className="ms-auto d-flex align-items-center">
+            <Nav.Link as={Link} to="/" className="text-white fw-semibold mx-2">
+              🏠 Home
+            </Nav.Link>
+            <Nav.Link
+              as="span"
+              className="text-white fw-semibold mx-2"
+              onClick={openTermsModal}
+              style={{ cursor: "pointer" }}
+            >
+              📜 Terms & Conditions
+            </Nav.Link>
 
-          {/* Cart Icon with Badge */}
-          <Nav.Link
-            href="/cart"
-            className="mx-1 position-relative"  // Ensure position relative for the badge positioning
-            style={{ color: "white" }}
-          >
-            <FaShoppingCart size={20} />
-            {cartItems && cartItems.length > 0 && (
-              <Badge
-                pill
-                bg="danger"
-                style={{
-                  position: "absolute",
-                  top: "-5px",
-                  right: "-5px",
-                }}
-              >
-                {cartItems.length}
-              </Badge>
-            )}
-          </Nav.Link>
+            {/* Cart Icon with Badge */}
+            <Nav.Link
+              as={Link}
+              to="/cart"
+              className="text-white position-relative mx-2"
+            >
+              <FaShoppingCart size={22} />
+              {cartItems && cartItems.length > 0 && (
+                <Badge
+                  pill
+                  bg="danger"
+                  className="position-absolute top-0 start-100 translate-middle"
+                >
+                  {cartItems.length}
+                </Badge>
+              )}
+            </Nav.Link>
 
-          <Nav.Link href="/orders" className="mx-1" style={{ color: "white" }}>
-            📦 Orders
-          </Nav.Link>
-          <Nav.Link href="/login" className="mx-1" style={{ color: "white" }}>
-            🔑 Login
-          </Nav.Link>
-        </Nav>
+            <Nav.Link as={Link} to="/orders" className="text-white fw-semibold mx-2">
+              📦 Orders
+            </Nav.Link>
+            <Nav.Link as={Link} to="/login" className="text-white fw-semibold mx-2">
+              🔑 Login
+            </Nav.Link>
+          </Nav>
+        </Navbar.Collapse>
       </Container>
     </Navbar>
   );
