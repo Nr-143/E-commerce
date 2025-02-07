@@ -1,0 +1,58 @@
+.product-specification {
+    max-height: 250px; /* Enforce max height */
+    overflow-y: auto; /* Enables scrolling */
+    padding: 15px;
+    border: 1px solid #E0BBE4; /* Soft Lavender border */
+    border-radius: 8px;
+    background-color: #F9F9F9; /* Cloud White */
+    width: 100%; /* Ensures it takes full width */
+  }
+  
+  /* Title styling */
+  .product-specification h3 {
+    font-size: 22px;
+    color: #6A0DAD;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  
+  /* Splitting into two columns */
+  .specification-columns {
+    display: flex; /* Enables flex layout */
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px; /* Space between columns */
+  }
+  
+  /* Styling for lists */
+  .specification-columns ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex: 1; /* Each column takes equal space */
+    min-width: 45%;
+  }
+  
+  /* Styling for list items */
+  .product-specification li {
+    font-size: 16px;
+    color: #3A3A3A;
+    padding: 5px 0;
+  }
+  
+  /* Ensure spacing between columns */
+  .specification-columns ul:first-child {
+    margin-right: 15px;
+  }
+  
+  /* Responsive: If there are few details, show a single column */
+  @media (max-width: 600px) {
+    .specification-columns {
+      flex-direction: column;
+    }
+  
+    .specification-columns ul:first-child {
+      margin-right: 0;
+    }
+  }
+  
