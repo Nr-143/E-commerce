@@ -5,7 +5,7 @@ import TermsModal from "../../components/TermsModal/TermsModal.jsx"; // Import T
 import GroceryCard from "../../components/ProductCard/GroceryCart/GroceryCard.jsx";
 import ClothingCard from "../../components/ProductCard/ClothingCart/ClothingCard.jsx";
 import ElectronicsCard from "../../components/ProductCard/ElectronicCart/ElectronicsCard.jsx";
-import defaultImage from "../../assets/icons/06.jpg";  // Not used but available
+import { Link } from "react-router-dom";
 
 const HomePage = () => {
   const [products, setProducts] = useState([]);
@@ -245,40 +245,46 @@ const HomePage = () => {
     <i className="fas fa-star text-warning"></i> Featured Products
   </h2>
   <div className="row">
-    {loading ? (
-      <p className="text-center">Loading products...</p>
-    ) : error ? (
-      <p className="text-center text-danger">{error}</p>
-    ) : products.length > 0 ? (
-      products.map((product) => {
-        // Choose the right card based on category
-        switch (product.category) {
-          case "groceries":
-            return (
-              <div className="col-6 col-md-3" key={product.id}> {/* 2 items per row on mobile, 4 on desktop */}
-                <GroceryCard product={product} />
-              </div>
-            );
-          case "clothing":
-            return (
-              <div className="col-6 col-md-3" key={product.id}>
-                <ClothingCard product={product} />
-              </div>
-            );
-          case "electronics":
-            return (
-              <div className="col-6 col-md-3" key={product.id}>
-                <ElectronicsCard product={product} />
-              </div>
-            );
-          default:
-            return null;
-        }
-      })
-    ) : (
-      <p className="text-center">No products available.</p>
-    )}
-  </div>
+          {loading ? (
+            <p className="text-center">Loading products...</p>
+          ) : error ? (
+            <p className="text-center text-danger">{error}</p>
+          ) : products.length > 0 ? (
+            products.map((product) => {
+              // Choose the right card based on category
+              switch (product.category) {
+                case "groceries":
+                  return (
+                    <div className="col-6 col-md-3" key={product.id}>
+                      <Link to={`/product/${product.id}`}>
+                        <GroceryCard product={product} />
+                      </Link>
+                    </div>
+                  );
+                case "clothing":
+                  return (
+                    <div className="col-6 col-md-3" key={product.id}>
+                      <Link to={`/product/${product.id}`}>
+                        <ClothingCard product={product} />
+                      </Link>
+                    </div>
+                  );
+                case "electronics":
+                  return (
+                    <div className="col-6 col-md-3" key={product.id}>
+                      <Link to={`/product/${product.id}`}>
+                        <ElectronicsCard product={product} />
+                      </Link>
+                    </div>
+                  );
+                default:
+                  return null;
+              }
+            })
+          ) : (
+            <p className="text-center">No products available.</p>
+          )}
+        </div>
 </section>
 
 

@@ -1,36 +1,39 @@
-/* TermsModal.css */
-
 .modal-overlay {
     position: fixed;
-    top: 0;
+    top: 70px;
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #020000; /* Solid black background for overlay */
+    background-color: #fcf7f7;
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 1000;
-    animation: fadeIn 0.5s ease; /* Animation for overlay fade-in */
+    animation: fadeIn 0.9s ease; 
+    max-height: 100vh; 
+    overflow-y: auto;
   }
   
-  .modal-content {
-    background-color: #FFFFFF; /* Solid pure white background */
+.modal-content {
+    background-color: #FFFFFF;
+    align-items: center;
     padding: 20px;
     border-radius: 8px;
-    max-width: 600px;
-    width: 100%;
-    color: #fcf5f5; /* Text color set to black for contrast */
+    max-width: 100%;
+    width: 400px;
+    color: #000000;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    animation: scaleIn 0.3s ease-out; /* Animation for scaling in modal content */
-  }
-  
+    animation: scaleIn 0.3s ease-out;
+    overflow-y: auto; 
+    max-height: 88vh; 
+}
+
   h3 {
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 15px;
     text-align: center;
-    color: #f8f3f3; /* Dark color for the heading */
+    color: #000000; 
   }
   
   .terms-list {
@@ -45,27 +48,43 @@
   .terms-list li {
     margin-bottom: 10px;
     font-size: 16px;
-    color: #ddd0d0; /* Ensure list items have a dark color */
+    color: #000000;
   }
   
   .close-btn {
     display: block;
-    width: 100%;
-    background-color: #FF6B35; /* Sunset Orange */
+    width: fit-content; 
+    min-width: 120px; 
+    background-color: #FF6B35; 
     color: white;
-    padding: 12px;
-    border: none;
-    border-radius: 5px;
+    padding: 12px 20px; 
+    border: 1px solid white;
+    border-radius: 8px;
     font-size: 16px;
+    font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-align: center;
+    margin: 20px auto; 
+}
+
+.close-btn:hover {
+    background-color: #b62a00; 
+    transform: scale(1.05); 
+    border: 1px solid white;
+}
+
+.close-btn:active {
+    transform: scale(0.95);
+    border: 1px solid white;
+
+}
   .close-btn:hover {
-    background-color: #FF4F1F; /* Darker Sunset Orange */
+    background-color: #db4e26; 
+    border: 1px solid white;
+
   }
   
-  /* Animation for fading in the modal overlay */
   @keyframes fadeIn {
     0% {
       opacity: 0;
@@ -75,7 +94,6 @@
     }
   }
   
-  /* Animation for scaling in modal content */
   @keyframes scaleIn {
     0% {
       transform: scale(0.8);
@@ -86,4 +104,56 @@
       opacity: 1;
     }
   }
-  
+ /* Back Icon (Fixed in Top-Left Corner) */
+.fixed-back-icon {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.fixed-back-icon svg {
+  font-size: 24px;
+  color: #FF6B35;
+}
+
+.fixed-back-icon :hover {
+  font-size: 24px;
+  color: #f8f5f4;
+}
+.fixed-back-icon:hover {
+  background-color: rgba(8, 2, 0, 0.9);
+  color: aliceblue;
+  transform: scale(1.1);
+  transition: all 0.2s ease-in-out;
+}
+
+
+/* Shake Animation */
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
+}
+
+.shake {
+  animation: shake 0.4s ease-in-out 2;
+}
+
+.modal-title {
+  text-align: center;
+  color: #1B1F3B;
+  margin-bottom: 20px;
+}
+
+
