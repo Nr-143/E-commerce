@@ -1,58 +1,66 @@
-.product-specification {
-    max-height: 250px; /* Enforce max height */
-    overflow-y: auto; /* Enables scrolling */
-    padding: 15px;
-    border: 1px solid #E0BBE4; /* Soft Lavender border */
-    border-radius: 8px;
-    background-color: #F9F9F9; /* Cloud White */
-    width: 100%; /* Ensures it takes full width */
-  }
-  
-  /* Title styling */
-  .product-specification h3 {
-    font-size: 22px;
-    color: #6A0DAD;
-    margin-bottom: 10px;
-    text-align: center;
-  }
-  
-  /* Splitting into two columns */
-  .specification-columns {
-    display: flex; /* Enables flex layout */
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 15px; /* Space between columns */
-  }
-  
-  /* Styling for lists */
-  .specification-columns ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    flex: 1; /* Each column takes equal space */
-    min-width: 45%;
-  }
-  
-  /* Styling for list items */
-  .product-specification li {
-    font-size: 16px;
-    color: #3A3A3A;
-    padding: 5px 0;
-  }
-  
-  /* Ensure spacing between columns */
-  .specification-columns ul:first-child {
-    margin-right: 15px;
-  }
-  
-  /* Responsive: If there are few details, show a single column */
-  @media (max-width: 600px) {
-    .specification-columns {
-      flex-direction: column;
-    }
-  
-    .specification-columns ul:first-child {
-      margin-right: 0;
-    }
-  }
-  
+.product-specification1 {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  min-height: 30px;
+}
+
+.spec-category {
+  margin-bottom: 30px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.product-specification h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.spec-category h4 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+/* Scrollable list */
+.spec-list {
+  max-height: 300px; /* Set max-height to 300px */
+  overflow-y: auto;  /* Add scroll when content exceeds max height */
+}
+
+.spec-item {
+  font-size: 1rem;
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+.spec-key {
+  font-weight: bold;
+  color: #333;
+}
+
+.spec-value {
+  color: #666;
+}
+
+.spec-item span {
+  display: block;
+  margin-top: 5px;
+}
+
+.spec-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.spec-list::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 10px;
+}
+
+.spec-list::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}

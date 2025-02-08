@@ -157,3 +157,39 @@
 }
 
 
+@media (max-width: 768px) {
+  .modal-content {
+    width: 90%; /* Reduce width for mobile */
+    padding: 15px; /* Less padding for smaller screens */
+    max-height: 75vh; /* Prevent it from occupying the whole screen */
+    overflow-y: auto; /* Enable scrolling if content exceeds height */
+  }
+
+  .fixed-back-icon {
+    top: 10px; /* Adjust position */
+    left: 10px; 
+    padding: 8px;
+  }
+
+  .fixed-back-icon svg {
+    font-size: 20px; /* Reduce icon size */
+  }
+
+  .terms-list ul {
+    padding-left: 15px; /* Less indentation for lists */
+  }
+
+  .terms-list li {
+    font-size: 14px; /* Reduce font size */
+  }
+
+  .close-btn {
+    width: 100%; /* Full width button for easy tapping */
+    padding: 10px; /* Reduce padding */
+    font-size: 14px; /* Adjust font size */
+  }
+
+  .modal-overlay {
+    top: 0; /* Cover entire screen */
+  }
+}
