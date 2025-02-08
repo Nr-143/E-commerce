@@ -6,7 +6,7 @@ import { FaShoppingCart } from "react-icons/fa";
 
 const NavbarComponent = ({ openTermsModal, cartItems }) => {
   const [searchQuery, setSearchQuery] = useState("");
-
+  cartItems=["1","2","3"]
   const handleSearch = () => {
     console.log("Searching for:", searchQuery);
   };
@@ -15,7 +15,7 @@ const NavbarComponent = ({ openTermsModal, cartItems }) => {
     <Navbar bg="dark" variant="dark" expand="lg" className="py-3 shadow-sm">
       <Container>
         {/* Brand Logo */}
-        <Navbar.Brand as={Link} to="/" className="text-white fw-bold fs-4">
+        <Navbar.Brand as={Link} to="/" className="text-white fw-bold fs-9">
           🛍 DailyMart
         </Navbar.Brand>
 
@@ -35,14 +35,7 @@ const NavbarComponent = ({ openTermsModal, cartItems }) => {
             <Nav.Link as={Link} to="/" className="text-white fw-semibold mx-2">
               🏠 Home
             </Nav.Link>
-            <Nav.Link
-              as="span"
-              className="text-white fw-semibold mx-2"
-              onClick={openTermsModal}
-              style={{ cursor: "pointer" }}
-            >
-              📜 Terms & Conditions
-            </Nav.Link>
+            
 
             {/* Cart Icon with Badge */}
             <Nav.Link
@@ -50,7 +43,7 @@ const NavbarComponent = ({ openTermsModal, cartItems }) => {
               to="/cart"
               className="text-white position-relative mx-2"
             >
-              <FaShoppingCart size={22} />
+              <FaShoppingCart size={22} /> Cart
               {cartItems && cartItems.length > 0 && (
                 <Badge
                   pill
@@ -67,6 +60,14 @@ const NavbarComponent = ({ openTermsModal, cartItems }) => {
             </Nav.Link>
             <Nav.Link as={Link} to="/login" className="text-white fw-semibold mx-2">
               🔑 Login
+            </Nav.Link>
+            <Nav.Link
+              as="span"
+              className="text-white fw-semibold mx-2"
+              onClick={openTermsModal}
+              style={{ cursor: "pointer" }}
+            >
+              📜 Terms & Conditions
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>
