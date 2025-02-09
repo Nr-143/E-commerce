@@ -1,6 +1,6 @@
 import "./HomePage.css";
 import React, { useEffect, useState } from "react";
-import { fetchProducts } from "../../api/api";  // Import API function (optional)
+import { fetchProducts } from "../../api/api"; // Import API function (optional)
 import TermsModal from "../../components/TermsModal/TermsModal.jsx"; // Import TermsModal
 import GroceryCard from "../../components/ProductCard/GroceryCart/GroceryCard.jsx";
 import ClothingCard from "../../components/ProductCard/ClothingCart/ClothingCard.jsx";
@@ -11,7 +11,7 @@ const HomePage = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [isModalOpen, setModalOpen] = useState(false);  // FIXED: Undefined state
+  const [isModalOpen, setModalOpen] = useState(false); // FIXED: Undefined state
 
   useEffect(() => {
     const fetchProductsData = async () => {
@@ -28,7 +28,7 @@ const HomePage = () => {
             discount: 20,
             ratings: 4.5,
             isInCart: false,
-            category: "groceries"
+            category: "groceries",
           },
           {
             id: 101,
@@ -41,7 +41,7 @@ const HomePage = () => {
             ratings: 4.3,
             size: ["S", "M", "L", "XL"],
             isInCart: false,
-            category: "clothing"
+            category: "clothing",
           },
           {
             id: 201,
@@ -54,7 +54,7 @@ const HomePage = () => {
             ratings: 4.7,
             warranty: "1 Year",
             isInCart: false,
-            category: "electronics"
+            category: "electronics",
           },
           {
             id: 2,
@@ -66,7 +66,7 @@ const HomePage = () => {
             discount: 25,
             ratings: 4.2,
             isInCart: false,
-            category: "groceries"
+            category: "groceries",
           },
           {
             id: 102,
@@ -79,7 +79,7 @@ const HomePage = () => {
             ratings: 4.6,
             size: ["30", "32", "34", "36"],
             isInCart: false,
-            category: "clothing"
+            category: "clothing",
           },
           {
             id: 202,
@@ -92,7 +92,7 @@ const HomePage = () => {
             ratings: 4.8,
             warranty: "2 Years",
             isInCart: false,
-            category: "electronics"
+            category: "electronics",
           },
           {
             id: 3,
@@ -104,7 +104,7 @@ const HomePage = () => {
             discount: 20,
             ratings: 4.3,
             isInCart: false,
-            category: "groceries"
+            category: "groceries",
           },
           {
             id: 103,
@@ -117,7 +117,7 @@ const HomePage = () => {
             ratings: 4.5,
             size: ["M", "L", "XL"],
             isInCart: false,
-            category: "clothing"
+            category: "clothing",
           },
           {
             id: 203,
@@ -130,7 +130,7 @@ const HomePage = () => {
             ratings: 4.6,
             warranty: "6 Months",
             isInCart: false,
-            category: "electronics"
+            category: "electronics",
           },
           {
             id: 4,
@@ -142,7 +142,7 @@ const HomePage = () => {
             discount: 20,
             ratings: 4.4,
             isInCart: false,
-            category: "groceries"
+            category: "groceries",
           },
           {
             id: 104,
@@ -155,7 +155,7 @@ const HomePage = () => {
             ratings: 4.7,
             size: ["S", "M", "L"],
             isInCart: false,
-            category: "clothing"
+            category: "clothing",
           },
           {
             id: 204,
@@ -168,7 +168,7 @@ const HomePage = () => {
             ratings: 4.5,
             warranty: "1 Year",
             isInCart: false,
-            category: "electronics"
+            category: "electronics",
           },
           {
             id: 5,
@@ -180,7 +180,7 @@ const HomePage = () => {
             discount: 25,
             ratings: 4.2,
             isInCart: false,
-            category: "groceries"
+            category: "groceries",
           },
           {
             id: 105,
@@ -193,7 +193,7 @@ const HomePage = () => {
             ratings: 4.4,
             size: ["40", "41", "42", "43"],
             isInCart: false,
-            category: "clothing"
+            category: "clothing",
           },
           {
             id: 205,
@@ -206,11 +206,10 @@ const HomePage = () => {
             ratings: 4.9,
             warranty: "2 Years",
             isInCart: false,
-            category: "electronics"
-          }
+            category: "electronics",
+          },
         ];
-        
-        
+
         setProducts(data);
         setLoading(false);
       } catch (err) {
@@ -218,7 +217,7 @@ const HomePage = () => {
         setLoading(false);
       }
     };
-    
+
     fetchProductsData();
   }, []);
 
@@ -227,11 +226,24 @@ const HomePage = () => {
 
   return (
     <div className="homepage-container">
-
       {/* Categories Section */}
-      <section className="categories-section mt-5" style={{border:"1px solid tomato "}}>
+      <section
+        className="categories-section mt-5"
+        style={{ border: "1px solid tomato " }}
+      >
         <div className="categories-scroll-container">
-          {["Dress", "Groceries", "Electronics", "Mobiles", "Gifts", "Men", "Women", "Books", "Kids", "Service"].map((category, index) => (
+          {[
+            "Dress",
+            "Groceries",
+            "Electronics",
+            "Mobiles",
+            "Gifts",
+            "Men",
+            "Women",
+            "Books",
+            "Kids",
+            "Service",
+          ].map((category, index) => (
             <div className="category-card" key={index}>
               <h5 className="text-white">{category}</h5>
             </div>
@@ -241,10 +253,10 @@ const HomePage = () => {
 
       {/* Featured Products Section */}
       <section className="products-section mt-1">
-  <h2 className="section-title mb-4 text-center">
-    <i className="fas fa-star text-warning"></i> Featured Products
-  </h2>
-  <div className="row">
+        <h2 className="section-title mb-4 text-center">
+          <i className="fas fa-star text-warning"></i> Featured Products
+        </h2>
+        <div className="row">
           {loading ? (
             <p className="text-center">Loading products...</p>
           ) : error ? (
@@ -252,41 +264,20 @@ const HomePage = () => {
           ) : products.length > 0 ? (
             products.map((product) => {
               // Choose the right card based on category
-              switch (product.category) {
-                case "groceries":
-                  return (
-                    <div className="col-6 col-md-3" key={product.id}>
-                      <Link to={`/product/${product.id}`}>
-                        <GroceryCard product={product} />
-                      </Link>
-                    </div>
-                  );
-                case "clothing":
-                  return (
-                    <div className="col-6 col-md-3" key={product.id}>
-                      <Link to={`/product/${product.id}`}>
-                        <ClothingCard product={product} />
-                      </Link>
-                    </div>
-                  );
-                case "electronics":
-                  return (
-                    <div className="col-6 col-md-3" key={product.id}>
-                      <Link to={`/product/${product.id}`}>
-                        <ElectronicsCard product={product} />
-                      </Link>
-                    </div>
-                  );
-                default:
-                  return null;
-              }
+
+              return (
+                <div className="col-6 col-md-3" key={product.id}>
+                  <Link to={`/product/${product.id}`}>
+                    <ElectronicsCard product={product} />
+                  </Link>
+                </div>
+              );
             })
           ) : (
             <p className="text-center">No products available.</p>
           )}
         </div>
-</section>
-
+      </section>
 
       {/* About Us Section */}
       <section className="about-us-section mt-5">
@@ -294,8 +285,9 @@ const HomePage = () => {
           <i className="fas fa-info-circle"></i> About Us
         </h2>
         <p>
-          We provide high-quality groceries and clothing at the best prices. Our mission is to bring convenience and
-          quality to your doorstep. Shop with us for a seamless and enjoyable shopping experience.
+          We provide high-quality groceries and clothing at the best prices. Our
+          mission is to bring convenience and quality to your doorstep. Shop
+          with us for a seamless and enjoyable shopping experience.
         </p>
         <p>
           <a href="#!" onClick={openTermsModal} className="terms-link">

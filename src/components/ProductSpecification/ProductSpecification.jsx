@@ -4,7 +4,7 @@ import "./ProductSpecification.css";
 const ProductSpecification = ({ specifications }) => {
   return (
     <div className="product-specification1">
-      <h3>Specifications</h3>
+      {/* <h3>Specifications</h3> */}
       {specifications.map((category, categoryIndex) => (
         <div key={categoryIndex} className="spec-category">
           <h4>{category.category}</h4>

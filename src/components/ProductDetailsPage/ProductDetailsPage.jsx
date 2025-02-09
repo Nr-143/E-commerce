@@ -116,8 +116,6 @@ const ProductDetailsPage = () => {
           offerPercent: 20, // Offer percentage if there is a discount
         };
 
-
-
         const relatedData = [
           {
             id: 1,
@@ -176,7 +174,7 @@ const ProductDetailsPage = () => {
           setProduct(productData); // Simulated product data
           setRelatedProducts(relatedData); // Simulated related products data
           setLoading(false); // Set loading to false after 2 seconds
-        }, 10000);
+        }, 1000);
       } catch (err) {
         setError("Failed to load product details!");
         setLoading(false);
@@ -321,10 +319,13 @@ const ProductDetailsPage = () => {
 
                   {/* Original & Discounted Price */}
                   <div className="price">
-                    <span className="original-price">
+                    <span className="original-price" style={{ color: "red" }}>
                       ${productData.originalPrice.toFixed(2)}
                     </span>
-                    <span className="discounted-price">
+                    <span
+                      className="discounted-price"
+                      style={{ color: "green" }}
+                    >
                       ${discountedPrice.toFixed(2)}
                     </span>
                   </div>
