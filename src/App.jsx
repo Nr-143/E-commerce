@@ -7,7 +7,7 @@ import NavbarComponent from "./components/NavbarComponent.jsx";
 import TermsModal from "./components/TermsModal/TermsModal.jsx";
 
 function App() {
-  const [isModalOpen, setModalOpen] = useState(false); 
+  const [isModalOpen, setModalOpen] = useState(false);
 
   const openTermsModal = () => setModalOpen(true);
 
@@ -20,18 +20,12 @@ function App() {
       <NavbarComponent openTermsModal={openTermsModal} />
 
       <Routes>
-        <Route 
-          path="/" 
-          element={<HomePage openTermsModal={openTermsModal} />} 
+        <Route
+          path="/"
+          element={<HomePage openTermsModal={openTermsModal} />}
         />
-        <Route 
-          path="/product/:id" 
-          element={<  ProductPage />} 
-        />
-        <Route 
-          path="/cart" 
-          element={<CartPage />} 
-        />
+        <Route path="/product/:id" element={<ProductPage />} />
+        <Route path="/cart" element={<CartPage />} />
       </Routes>
 
       {/* Terms & Conditions Modal */}

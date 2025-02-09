@@ -1,0 +1,118 @@
+/* Loader Container */
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3); /* Slightly transparent background */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999; /* Ensure it stays on top */
+  flex-direction: column;
+  text-align: center; /* Center text under the spinner */
+}
+
+/* Spinner Design */
+.spinner {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  border: 8px solid #f3f3f3; /* Light gray border */
+  border-top: 8px solid #6a0dad; /* Electric Purple border */
+  border-radius: 50%;
+  animation: spin 1.5s linear infinite; /* Faster spin for dynamic feel */
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
+
+/* Add inner circle to create a more dynamic loader */
+.spinner-circle {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  width: 50px;
+  height: 50px;
+  background-color: #ff6b35; /* Sunset Orange background */
+  border-radius: 50%;
+  animation: bounce 1s ease-in-out infinite;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Soft shadow around the circle */
+}
+
+/* Loading Text */
+.loading-text {
+  font-size: 24px;
+  color: #fff;
+  margin-top: 20px;
+  font-family: "Arial", sans-serif;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 1px;
+  animation: fadeIn 1s ease-out infinite alternate;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Text shadow for clarity */
+}
+
+/* Buttons Container */
+.buttons-container {
+  margin-top: 30px;
+}
+
+/* Retry and Cancel Button Styles */
+.retry-button,
+.cancel-button {
+  padding: 10px 20px;
+  margin: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  outline: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth animations */
+}
+
+/* Button Hover Effects */
+.retry-button:hover {
+  background-color: #6a0dad; /* Electric Purple */
+  color: #fff;
+  transform: scale(1.1); /* Slight zoom effect */
+  box-shadow: 0 0 10px rgba(106, 13, 173, 0.8); /* Glow effect */
+}
+
+.cancel-button:hover {
+  background-color: #ff6b35; /* Sunset Orange */
+  color: #fff;
+  transform: scale(1.1); /* Slight zoom effect */
+  box-shadow: 0 0 10px rgba(255, 107, 53, 0.8); /* Glow effect */
+}
+
+/* Spinner animation */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Bouncing effect for the inner circle */
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px); /* Bouncing higher for a more dynamic feel */
+  }
+}
+
+/* Fading text animation */
+@keyframes fadeIn {
+  0% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}

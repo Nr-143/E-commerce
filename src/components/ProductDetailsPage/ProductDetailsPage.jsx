@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
+import { Link } from "react-router-dom";
+import Loader from "../Loader/Loader"; // Import the loader
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import defaultImage from "../../assets/icons/06.jpg";
@@ -16,6 +18,8 @@ const ProductDetailsPage = () => {
   const [relatedProducts, setRelatedProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [countdown, setCountdown] = useState("");
+
   const [visibleOption, setVisibleOption] = useState("specifications");
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const navigate = useNavigate();
@@ -30,10 +34,10 @@ const ProductDetailsPage = () => {
   useEffect(() => {
     const fetchProductDetails = async () => {
       setLoading(true);
-      setProduct(null); // Reset previous product to avoid stale data
+      setProduct(null);
       try {
         const productData = {
-          id: 1,
+          id: 101,
           name: "Smartphone 1",
           brand: "TechBrand",
           image: [defaultImage, defaultImage, defaultImage, defaultImage],
@@ -112,6 +116,8 @@ const ProductDetailsPage = () => {
           offerPercent: 20, // Offer percentage if there is a discount
         };
 
+
+
         const relatedData = [
           {
             id: 1,
@@ -166,9 +172,11 @@ const ProductDetailsPage = () => {
           // Additional related products here
         ];
 
-        setProduct(productData);
-        setRelatedProducts(relatedData);
-        setLoading(false);
+        setTimeout(() => {
+          setProduct(productData); // Simulated product data
+          setRelatedProducts(relatedData); // Simulated related products data
+          setLoading(false); // Set loading to false after 2 seconds
+        }, 10000);
       } catch (err) {
         setError("Failed to load product details!");
         setLoading(false);
@@ -177,6 +185,31 @@ const ProductDetailsPage = () => {
 
     fetchProductDetails();
   }, [id]);
+  useEffect(() => {
+    if (!productData || !productData.offerEndTime) return;
+
+    const updateCountdown = () => {
+      const now = new Date().getTime();
+      const offerEnd = new Date(productData.offerEndTime).getTime();
+      const timeLeft = offerEnd - now;
+
+      if (timeLeft <= 0) {
+        setCountdown("Offer expired");
+        return;
+      }
+
+      const hours = Math.floor((timeLeft / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((timeLeft / (1000 * 60)) % 60);
+      const seconds = Math.floor((timeLeft / 1000) % 60);
+
+      setCountdown(`${hours}h ${minutes}m ${seconds}s`);
+    };
+
+    updateCountdown();
+    const interval = setInterval(updateCountdown, 1000);
+    return () => clearInterval(interval);
+  }, [productData]);
+
   const getDiscountedPrice = (originalPrice, offerPercent) => {
     if (offerPercent > 0) {
       return originalPrice - (originalPrice * offerPercent) / 100;
@@ -184,7 +217,7 @@ const ProductDetailsPage = () => {
     return originalPrice; // No discount if offer percent is 0
   };
 
-  if (!productData) return <div>Loading...</div>;
+  if (!productData) return <Loader />; // Show loader while loading
 
   const discountedPrice = getDiscountedPrice(
     productData.originalPrice,
@@ -228,7 +261,6 @@ const ProductDetailsPage = () => {
               {currentImageIndex + 1} / {productData.image.length}
             </span>
           </div>
-
           <div className="user-details">
             <h3>Delivery Address</h3>
             <div className="user-info">
@@ -264,30 +296,42 @@ const ProductDetailsPage = () => {
               <span className="offer-text" style={{ color: "green" }}>
                 Offer: {productData.offerPercent}% OFF
               </span>
-              <span className="offer-end-time">
-                Ends in: {productData.offerEndTime}
-              </span>
+              <span className="offer-end-time">Ends in: {countdown}</span>
             </div>
           )}
 
           <div className="product-info">
-            <h1>{productData.name}</h1>
-            <p className="brand">{productData.brand}</p>
-            <p className="description">{productData.description}</p>
+            {/* Product Name */}
+            <h1 className="product-title">{productData.name}</h1>
 
+            {/* Brand Name */}
+            <p className="brand-name">{productData.brand}</p>
+
+            {/* Product Description */}
+            <p className="product-description">{productData.description}</p>
+
+            {/* Price Section */}
             <div className="price-section">
               {productData.offerPercent > 0 ? (
-                <div className="price">
-                  <span className="original-price" style={{ color: "red" }}>
-                    ${productData.originalPrice.toFixed(2)}
+                <>
+                  {/* Offer Badge */}
+                  <span className="offer-badge">
+                    -{productData.offerPercent}% OFF
                   </span>
-                  <span className="discounted-price" style={{ color: "green" }}>
-                    ${discountedPrice.toFixed(2)}
-                  </span>
-                </div>
+
+                  {/* Original & Discounted Price */}
+                  <div className="price">
+                    <span className="original-price">
+                      ${productData.originalPrice.toFixed(2)}
+                    </span>
+                    <span className="discounted-price">
+                      ${discountedPrice.toFixed(2)}
+                    </span>
+                  </div>
+                </>
               ) : (
                 <div className="price">
-                  <span className="price">
+                  <span className="regular-price">
                     ${productData.originalPrice.toFixed(2)}
                   </span>
                 </div>
@@ -312,7 +356,7 @@ const ProductDetailsPage = () => {
               onClick={() => handleOptionChange("seller")}
               className={visibleOption === "seller" ? "active" : ""}
             >
-              Seller Details
+              Seller
             </button>
           </div>
 
@@ -332,7 +376,6 @@ const ProductDetailsPage = () => {
 
             {visibleOption === "seller" && (
               <div className="seller-details">
-                <h3>Seller Details</h3>
                 <ProductSellerDetails seller={productData.seller} />
               </div>
             )}
@@ -344,15 +387,14 @@ const ProductDetailsPage = () => {
 
       {/* Related Products */}
       <div className="related-products">
-        <h3>Related Products</h3>
+        {/* <h3>Related Products</h3> */}
+
         <div className="row">
           {relatedProducts.map((relatedProduct) => (
             <div
               className="col-4"
               key={relatedProduct.id}
-              onClick={() => {
-                navigate(`/product/${relatedProduct.id}`);
-              }}
+              onClick={() => navigate(`/product/${relatedProduct.id}`)} // Use navigate instead of Link
               style={{ cursor: "pointer" }}
             >
               <ProductCard product={relatedProduct} />
