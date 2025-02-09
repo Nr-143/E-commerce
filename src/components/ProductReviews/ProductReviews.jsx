@@ -54,16 +54,16 @@ const ProductReviews = ({ reviews }) => {
 
       {/* Only show average rating in summary view */}
       {view === "summary" && (
-        <div className="review-summary" style={{ background: "grey", borderRadius: "10px", marginTop: "10px" }}>
+        <div className="review-summary" style={{ background: "white", borderRadius: "10px", marginTop: "10px" }}>
       <div className="average-rating" style={{gap:"10px"}}>
             <span style={{ color: "black" }}>Average Rating :</span>
             <div className="average-rating-display" >
               {/* Display average rating as 4/5 instead of stars */}
-              <span style={{ color: "white", fontSize: "20px" }}>
+              <span style={{ color: "black", fontSize: "20px" }}>
                 {Math.round(averageRating)}/{5}
               </span>
             </div>
-            <span style={{ color: "yellow", fontSize: "14px" }}>({reviews.length} reviews)</span>
+            <span style={{ color: "green", fontSize: "14px" }}>({reviews.length} reviews)</span>
           </div>  
           <ul className="review-stats">
   {stats
@@ -84,7 +84,7 @@ const ProductReviews = ({ reviews }) => {
     {" ⭐   reviews:"}
   </span>
 </span>
-        <span className="stat-count"  style={{color:"white"}}>
+        <span className="stat-count"  style={{color:"black"}}>
           {count} {count === 1 || count === 0 ? "member" : "members"}
         </span>
       </li>

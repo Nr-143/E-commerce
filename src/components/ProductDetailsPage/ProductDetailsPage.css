@@ -246,12 +246,15 @@
 .product-info h1 {
   font-size: 24px;
   font-weight: bold;
+  width: 100%;
+
   color: #1b1f3b; /* Match with the primary color */
 }
 
 .product-info .brand {
   font-size: 16px;
   font-weight: 600;
+  width: 100%;
   color: #6a0dad; /* Using Electric Purple */
   margin-top: 8px;
 }
@@ -259,12 +262,15 @@
 .product-info .description {
   font-size: 14px;
   color: #3a3a3a;
+  width: 100%;
   margin-top: 12px;
   line-height: 1.5;
+
 }
 
 .price-section {
   margin-top: 20px;
+  margin-left: auto;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -422,7 +428,7 @@
 
 @media (min-width: 769px) {
   .offer-badge-mobile {
-    display: none; 
+    display: none;
   }
 }
 
@@ -437,8 +443,103 @@
     padding: 8px;
     font-size: 14px;
   }
-  .offer-badge{
-    top: -435px;
+  .offer-badge {
+    top: -594px;
     margin-right: 190px;
+  }
+}
+/* User Details Section */
+.user-details {
+  background-color: #f9f9f9;
+  padding: 15px;
+  border-radius: 10px;
+  margin-top: 15px;
+  font-size: 14px;
+  text-align: left;
+  width:100% ;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Delivery Address Title */
+.user-details h3 {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Username & Status (Active) */
+.user-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 500;
+  color: green;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  background-color: green;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 5px;
+}
+
+/* Email & Phone Row */
+.contact-info {
+  font-size: 14px;
+  color: #555;
+  margin-top: 5px;
+}
+
+/* Address Row */
+.address-info {
+  font-size: 14px;
+  margin-top: 5px;
+  color: #333;
+  font-weight: 500;
+}
+
+/* Deliverable Days */
+.delivery-days {
+  font-size: 14px;
+  margin-top: 8px;
+  font-weight: bold;
+  color: #ff6b35;
+  margin-left: 30%;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .user-details {
+    padding: 10px;
+    font-size: 13px;
+  }
+
+  .user-info {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .status {
+    margin-top: 3px;
+  }
+
+  .contact-info {
+    flex-direction: column;
+    margin-top: 3px;
+  }
+
+  .delivery-days {
+    font-size: 13px;
+    margin-top: 5px;
   }
 }

@@ -1,13 +1,31 @@
 import React from "react";
+import { FaStore, FaMapMarkerAlt, FaStar } from "react-icons/fa";
 import "./ProductSellerDetails.css";
 
-const ProductSellerDetails = () => {
+const ProductSellerDetails = ({ seller }) => {
+  if (!seller || seller.length === 0) {
+    return <p className="no-seller">Seller information not available.</p>;
+  }
+
+  const { company, location, rating } = seller[0]; // Extract first seller object
+
   return (
-    <div className="product-seller-details">
-      <h3>Seller Details</h3>
-      <p><strong>Name:</strong> ABC Store</p>
-      <p><strong>Location:</strong> New York, USA</p>
-      <p><strong>Rating:</strong> 4.5 / 5</p>
+    <div className="seller-card">
+      <h3 className="seller-heading">Seller Details</h3>
+      <div className="seller-info">
+        <p>
+          <FaStore className="icon" aria-label="Store Icon" />{" "}
+          <strong>Name : </strong> {company}
+        </p>
+        <p>
+          <FaMapMarkerAlt className="icon" aria-label="Location Icon" />{" "}
+          <strong>Location : </strong> {location}
+        </p>
+        <p>
+          <FaStar className="icon star" aria-label="Star Icon" />{" "}
+          <strong>Rating : </strong> {rating} / 5
+        </p>
+      </div>
     </div>
   );
 };

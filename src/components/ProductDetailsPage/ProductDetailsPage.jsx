@@ -5,8 +5,9 @@ import "slick-carousel/slick/slick-theme.css";
 import defaultImage from "../../assets/icons/06.jpg";
 import { useParams, useNavigate } from "react-router-dom";
 import ProductCard from "../ProductCard/ProductCard";
+import ProductSpecifications from "../ProductSpecification/ProductSpecification";
+import ProductSellerDetails from "../ProductSellerDetails/ProductSellerDetails";
 import ProductReviews from "../ProductReviews/ProductReviews";
-
 import "./ProductDetailsPage.css";
 
 const ProductDetailsPage = () => {
@@ -19,6 +20,13 @@ const ProductDetailsPage = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const navigate = useNavigate();
 
+  const [user, setUser] = useState({
+    name: "John Doe",
+    email: "johndoe@example.com",
+    phone: "+1 234 567 890",
+    address: "123 Main Street, New York, USA",
+    deliverableDays: "3-5 Days",
+  });
   useEffect(() => {
     const fetchProductDetails = async () => {
       setLoading(true);
@@ -93,7 +101,13 @@ const ProductDetailsPage = () => {
             },
           ],
           offerEndTime: "08/02/2025",
-          seller: "TechBrand Official Store",
+          seller: [
+            {
+              company: "TechBrand Official Store",
+              location: "New York, USA",
+              rating: 4.5,
+            },
+          ],
           originalPrice: 150.0, // The original price of the product
           offerPercent: 20, // Offer percentage if there is a discount
         };
@@ -215,6 +229,24 @@ const ProductDetailsPage = () => {
             </span>
           </div>
 
+          <div className="user-details">
+            <h3>Delivery Address</h3>
+            <div className="user-info">
+              <span className="username">{user.name}</span>
+              <span className="status">
+                <span className="status-dot"></span> {user.status}
+              </span>
+            </div>
+            <div className="contact-info">
+              <span>{user.email}</span> | <span>{user.phone}</span>
+            </div>
+            <div className="address-info">{user.address}</div>
+            <div className="delivery-days">
+              🚚 Estimated Delivery:{" "}
+              <strong style={{ color: "green" }}>{user.deliverableDays}</strong>
+            </div>
+          </div>
+
           {/* Total Images and Buy/Add to Cart Buttons */}
           <div className="image-counter-and-buttons">
             <div className="buy-add-buttons">
@@ -229,7 +261,7 @@ const ProductDetailsPage = () => {
           {/* Offer badge and end time at top right */}
           {productData.offerPercent > 0 && (
             <div className="offer-badge">
-              <span className="offer-text">
+              <span className="offer-text" style={{ color: "green" }}>
                 Offer: {productData.offerPercent}% OFF
               </span>
               <span className="offer-end-time">
@@ -246,10 +278,10 @@ const ProductDetailsPage = () => {
             <div className="price-section">
               {productData.offerPercent > 0 ? (
                 <div className="price">
-                  <span className="original-price">
+                  <span className="original-price" style={{ color: "red" }}>
                     ${productData.originalPrice.toFixed(2)}
                   </span>
-                  <span className="discounted-price">
+                  <span className="discounted-price" style={{ color: "green" }}>
                     ${discountedPrice.toFixed(2)}
                   </span>
                 </div>
@@ -287,23 +319,10 @@ const ProductDetailsPage = () => {
           {/* Product Options */}
           <div className="product-options">
             {visibleOption === "specifications" && (
-              <div className="specifications">
-                <h3>Specifications</h3>
-                {productData.specifications.map((category, categoryIndex) => (
-                  <div key={categoryIndex} className="spec-category">
-                    <h4>{category.category}</h4>
-                    <ul>
-                      {category.specs.map((spec, specIndex) => (
-                        <li key={specIndex}>
-                          {Object.keys(spec)[0]}: {Object.values(spec)[0]}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                ))}
-              </div>
+              <ProductSpecifications
+                specifications={productData.specifications}
+              />
             )}
-
             {visibleOption === "reviews" && (
               <div className="reviews">
                 {/* <h3>Reviews</h3> */}
@@ -314,7 +333,7 @@ const ProductDetailsPage = () => {
             {visibleOption === "seller" && (
               <div className="seller-details">
                 <h3>Seller Details</h3>
-                <p>{productData.seller}</p>
+                <ProductSellerDetails seller={productData.seller} />
               </div>
             )}
           </div>
