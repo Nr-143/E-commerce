@@ -4,7 +4,7 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.3); /* Slightly transparent background */
+  background-color: rgba(255, 255, 255, 0.3); /* Slightly transparent background */
   position: fixed;
   top: 0;
   left: 0;
@@ -19,7 +19,7 @@
   position: relative;
   width: 80px;
   height: 80px;
-  border: 8px solid #f3f3f3; /* Light gray border */
+  border: 8px solid #3b3838; /* Light gray border */
   border-top: 8px solid #6a0dad; /* Electric Purple border */
   border-radius: 50%;
   animation: spin 1.5s linear infinite; /* Faster spin for dynamic feel */
@@ -42,7 +42,7 @@
 /* Loading Text */
 .loading-text {
   font-size: 24px;
-  color: #fff;
+  color: #000000;
   margin-top: 20px;
   font-family: "Arial", sans-serif;
   text-transform: uppercase;
