@@ -3,9 +3,9 @@ import "./AnimatedTextArea.css";
 
 const AnimatedTextArea = ({ setQuery, onEnterPress }) => {
   const PLACEHOLDERS = [
-    "Find the best grocery deals in your area",
+    "Find the best grocery deals ",
     "Shop fresh vegetables and fruits",
-    "Discover exclusive discounts on essentials",
+    "Discover exclusive discounts",
   ];
 
   const [currentText, setCurrentText] = useState("");

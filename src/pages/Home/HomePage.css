@@ -1,6 +1,10 @@
 .homepage-container {
   padding: 20px;
 }
+* {
+  text-decoration: none;
+}
+
 
 .category-card,
 .product-card {
@@ -306,4 +310,7 @@
 .homepage-container {
   padding-top: 0 !important; /* Ensure no extra padding */
   margin-top: -40px; /* Adjust this value if needed */
+}
+ div a {
+  text-decoration: none;
 }

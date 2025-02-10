@@ -2,9 +2,7 @@ import "./HomePage.css";
 import React, { useEffect, useState } from "react";
 import { fetchProducts } from "../../api/api"; // Import API function (optional)
 import TermsModal from "../../components/TermsModal/TermsModal.jsx"; // Import TermsModal
-import GroceryCard from "../../components/ProductCard/GroceryCart/GroceryCard.jsx";
-import ClothingCard from "../../components/ProductCard/ClothingCart/ClothingCard.jsx";
-import ElectronicsCard from "../../components/ProductCard/ElectronicCart/ElectronicsCard.jsx";
+import ProductCard from "../../components/ProductCard/ProductCard.jsx";
 import { Link } from "react-router-dom";
 
 const HomePage = () => {
@@ -268,7 +266,7 @@ const HomePage = () => {
               return (
                 <div className="col-6 col-md-3" key={product.id}>
                   <Link to={`/product/${product.id}`}>
-                    <ElectronicsCard product={product} />
+                    <ProductCard product={product} />
                   </Link>
                 </div>
               );

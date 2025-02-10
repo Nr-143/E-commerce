@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import HomePage from "./pages/Home/HomePage.jsx";
 import ProductPage from "./components/ProductDetailsPage/ProductDetailsPage.jsx";
 import CartPage from "./pages/CartPage.jsx";
-import NavbarComponent from "./components/NavbarComponent.jsx";
+import NavbarComponent from "./components/NavBarComponent/NavbarComponent.jsx";
 import TermsModal from "./components/TermsModal/TermsModal.jsx";
 
 function App() {
