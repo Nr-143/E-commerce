@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import { Link } from "react-router-dom";
-import Loader from "../Loader/Loader"; // Import the loader
+import Loader from "../Loader/Loader"; 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import defaultImage from "../../assets/icons/06.jpg";
@@ -39,7 +39,7 @@ const ProductDetailsPage = () => {
    `https://world.openfoodfacts.org/api/v0/product/${3017620422003}.json`
  );
       const data = await response.json();
-   
+   console.log("data",data)
       try {
         const productData = {
           id: 101,
@@ -253,7 +253,7 @@ const ProductDetailsPage = () => {
           <Slider {...sliderSettings} className="image-carousel">
             {productData.image.map((imgSrc, index) => (
               <div key={index} className="carousel-image">
-                <img src={imgSrc} alt={`${productData.name} ${index + 1}`} />
+                <img src={defaultImage} alt={`${productData.name} ${index + 1}`} />
               </div>
             ))}
           </Slider>
@@ -294,14 +294,12 @@ const ProductDetailsPage = () => {
         {/* Product Info Section */}
         <div className="details-section">
           {/* Offer badge and end time at top right */}
-          {productData.offerPercent > 0 && (
-            <div className="offer-badge">
-              <span className="offer-text" style={{ color: "green" }}>
-                Offer: {productData.offerPercent}% OFF
-              </span>
-              <span className="offer-end-time">Ends in: {countdown}</span>
-            </div>
-          )}
+{productData.offerPercent > 0 && (
+    <span className="offer-end-time">
+      Ends in: {countdown}
+    </span>
+)}
+
 
           <div className="product-info">
             {/* Product Name */}

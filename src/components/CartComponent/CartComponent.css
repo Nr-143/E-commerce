@@ -1,176 +1,142 @@
 .cart-container {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  
-  .cart-card {
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 12px;
-    border: none;
-    padding: 20px;
-    background-color: #fff;
-  }
-  
-  .cart-item {
-    display: flex;
-    padding: 15px 20px;
-    border-bottom: 1px solid #f0f0f0;
-    transition: background-color 0.3s ease;
-    align-items: center;
-  }
-  
-  .cart-item:hover {
-    background-color: #f9f9f9;
-  }
-  
-  .cart-item-image {
-    width: 60px;
-    height: auto;
-    object-fit: cover;
-    border-radius: 8px;
-  }
-  
-  .cart-item-details {
-    flex: 1;
-    margin-left: 15px;
-  }
-  
-  .cart-item-details h6 {
-    font-size: 1.1rem;
-    font-weight: bold;
-    margin-bottom: 5px;
-    color: #3a3a3a;
-  }
-  
-  .cart-item-details p {
-    margin: 5px 0;
-    font-size: 0.9rem;
-    color: #666;
-  }
-  
-  .cart-item-details .original-price {
-    text-decoration: line-through;
-    color: #888;
-  }
-  
-  .cart-item-controls {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  
-  .cart-item-controls .btn {
-    margin: 0 5px;
-    padding: 8px;
-    font-size: 1rem;
-  }
-  
-  .cart-item-controls .quantity-btn {
-    width: 35px;
-    padding: 5px;
-  }
-  
-  .cart-item-controls .quantity-display {
-    margin: 0 8px;
-    font-size: 1rem;
-  }
-  
-  .cart-item-controls .delete-btn {
-    padding: 5px;
-  }
-  
-  .cart-footer {
-    font-size: 1.1rem;
-    font-weight: bold;
-  }
-  
-  .cart-total {
-    color: #ff6b35; /* Sunset Orange */
-    font-weight: bold;
-  }
-  
-  .checkout-btn {
-    background-color: #6a0dad; /* Electric Purple */
-    color: #fff;
-    font-weight: bold;
-    padding: 10px 20px;
-    border-radius: 5px;
-  }
-  
-  .checkout-btn:hover {
-    background-color: #5a0da2;
-  }
-  
-  /* Sticky footer adjustments */
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 
-  
-  /* Responsive adjustments for mobile */
-  @media (max-width: 576px) {
-    .cart-container {
-      padding: 15px;
-    }
-  
-    .cart-card {
-      width: 100%;
-      padding: 15px;
-    }
-  
-    .cart-item {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-  
-    .cart-item-details {
-      margin-left: 0;
-      margin-bottom: 10px;
-    }
-  
-    .cart-item-controls {
-      margin-top: 10px;
-      justify-content: flex-start;
-    }
-  
-    .cart-item-controls .btn {
-      font-size: 1.2rem;
-      padding: 10px;
-    }
-  
-    .cart-total {
-      font-size: 1rem;
-    }
-  }
-  .sticky-footer {
-    position: -webkit-sticky; /* For Safari */
-    position: sticky;
-    bottom: 0;
-    z-index: 10; /* Ensures it stays on top of other content */
-    background-color: #fff; /* Optional: ensures a clean background when sticky */
-    padding: 10px 20px; /* Add padding to avoid text sticking to edges */
-    width: 100%;
-  }
+.cart-card {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  border: none;
+  padding: 20px;
+  background-color: #fff;
+}
+
+.cart-item {
+  display: flex;
+  padding: 15px 20px;
+  border-bottom: 1px solid #f0f0f0;
+  transition: background-color 0.3s ease;
+  align-items: center;
+}
+
+.cart-item:hover {
+  background-color: #f9f9f9;
+}
+
+.cart-item-image {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-right: 15px;
+}
+
+.cart-item-details {
+  flex: 1;
+}
+
+.cart-item-details h6 {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #3a3a3a;
+}
+
+.cart-item-details p {
+  margin: 5px 0;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.cart-item-controls {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.cart-item-controls .btn {
+  margin: 0 5px;
+  padding: 8px;
+  font-size: 1rem;
+}
+
+.cart-item-controls .quantity-btn {
+  width: 35px;
+  padding: 5px;
+}
+
+.cart-item-controls .quantity-display {
+  margin: 0 8px;
+  font-size: 1rem;
+}
+
+.cart-footer {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.cart-total {
+  color: #ff6b35;
+  font-weight: bold;
+}
+
+.checkout-btn {
+  background-color: #6a0dad;
+  color: #fff;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+.checkout-btn:hover {
+  background-color: #5a0da2;
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
   .cart-container {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 100%; /* Ensure full height of the viewport */
+    padding: 15px;
   }
-  
-  .cart-card {
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 12px;
-    border: none;
-    padding: 20px;
-    background-color: #fff;
-    min-height: 60vh; /* Adjust this based on how tall your card should be */
-    display: flex;
+
+  .cart-item {
     flex-direction: column;
-    justify-content: space-between;
+    align-items: flex-start;
   }
-  
+
+  .cart-item-details {
+    margin-left: 0;
+    margin-bottom: 10px;
+  }
+
+  .cart-item-controls {
+    margin-top: 10px;
+    justify-content: flex-start;
+  }
+
+  .cart-item-controls .btn {
+    font-size: 1.2rem;
+    padding: 10px;
+  }
+
+  .cart-total {
+    font-size: 1rem;
+  }
+}
+.cart-item-image {
+  width: 100%; /* Ensure the image takes up full width of its container */
+  height: auto;
+  object-fit: cover; /* Maintain the aspect ratio and crop if needed */
+  border-radius: 8px;
+  max-width: 200px; /* Set a max-width for larger screens */
+  max-height: 200px; /* Set a max-height for consistent size */
+  object-position: center; /* Ensure the image is centered when cropping */
+  display: block;
+  margin: 0 auto; /* Center the image */
+  /* Make sure this style has priority over others */
+  /* Use !important to ensure the styles are applied */
+  width: 100% !important;
+}

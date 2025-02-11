@@ -155,7 +155,19 @@
   transform: rotate(10deg);
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
-
+.timer-badge {
+  position: absolute;
+  top: 34px;
+  right: 8px;
+  background: linear-gradient(135deg, #058120, #D7263D); /* Bright Red */
+  color: #ffffff; /* Change to white */
+  font-size: 12px;
+  font-weight: bold;
+  padding: 6px 12px;
+  border-radius: 4px;
+  transform: rotate(10deg);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
 /* Mobile Responsive Design */
 @media (max-width: 768px) {
   .product-card {
@@ -188,7 +200,7 @@
   .action-buttons {
     flex-direction: column;
     justify-content: center;
-    gap: 10px;
+    gap: 3px;
   }
 
   .action-buttons .btn {
@@ -203,3 +215,83 @@
   text-decoration: none;
 }
 
+.delivery-info {
+  font-size: 13px;
+  text-align: center;
+  margin-bottom: 6px;
+  font-weight: bold;
+}
+
+.free-delivery {
+  color: #28A745; /* Green for free delivery */
+}
+
+.delivery-fee {
+  color: #D7263D; /* Red for delivery fee */
+}
+
+
+.discount-badge {
+  font-size: 1rem;
+  color: white;
+  background-color: #FF6B35;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.offer-end-time {
+  font-size: 0.85rem;
+  color: #1B1F3B;
+  background-color: #E0BBE4;
+  padding: 5px;
+  border-radius: 5px;
+  margin-top: 5px;
+}
+
+.rating-points {
+  font-size: 0.9rem;
+  color: #6A0DAD;
+}
+
+/* Desktop View - Show Stars */
+.desktop-rating {
+  display: none;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  /* Mobile View - Rating as Points */
+  .rating-points {
+    display: block;
+  }
+
+  /* Hide Star Ratings for Mobile */
+  .rating-stars {
+    display: none;
+  }
+
+  .product-card {
+    /* Adjust card layout for mobile */
+  }
+
+  .action-buttons {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .btn-cart, .btn-buy {
+    margin-bottom: 10px;
+    width: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  /* Desktop View - Show Stars */
+  .desktop-rating {
+    display: block;
+  }
+
+  .rating-points {
+    display: none;
+  }
+}

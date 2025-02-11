@@ -26,21 +26,24 @@ const HomePage = () => {
             discount: 20,
             ratings: 4.5,
             isInCart: false,
+            deliveryFee:300,
             category: "groceries",
           },
-          {
-            id: 101,
-            name: "Casual Cotton Shirt",
-            brand: "Urban Wear",
-            image: "https://via.placeholder.com/150",
-            oldPrice: 1200,
-            price: 999,
-            discount: 17,
-            ratings: 4.3,
-            size: ["S", "M", "L", "XL"],
-            isInCart: false,
-            category: "clothing",
-          },
+  {
+  "id": 101,
+  "name": "Casual Cotton Shirt",
+  "brand": "Urban Wear",
+  "image": "https://via.placeholder.com/150",
+  "oldPrice": 1200,
+  "price": 999,
+  "discount": 17,
+  "ratings": 4.3,
+  "deliveryFee": 0,
+  "size": ["S", "M", "L", "XL"],
+  "isInCart": false,
+  "offerEndTime": "2025-03-12T23:59:59Z",
+  "category": "clothing"
+         },
           {
             id: 201,
             name: "Wireless Bluetooth Headphones",
@@ -50,6 +53,7 @@ const HomePage = () => {
             price: 2999,
             discount: 14,
             ratings: 4.7,
+            deliveryFee:300,
             warranty: "1 Year",
             isInCart: false,
             category: "electronics",
@@ -59,10 +63,10 @@ const HomePage = () => {
             name: "Fresh Bananas",
             brand: "Tropical Farms",
             image: "https://via.placeholder.com/150",
-            oldPrice: 80,
+            oldPrice:null,
             price: 60,
-            discount: 25,
-            ratings: 4.2,
+            discount:0,
+            ratings: null,
             isInCart: false,
             category: "groceries",
           },
@@ -261,13 +265,9 @@ const HomePage = () => {
             <p className="text-center text-danger">{error}</p>
           ) : products.length > 0 ? (
             products.map((product) => {
-              // Choose the right card based on category
-
               return (
                 <div className="col-6 col-md-3" key={product.id}>
-                  <Link to={`/product/${product.id}`}>
                     <ProductCard product={product} />
-                  </Link>
                 </div>
               );
             })

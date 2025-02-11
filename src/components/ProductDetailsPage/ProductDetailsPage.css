@@ -287,15 +287,6 @@
   gap: 10px;
 }
 
-/* Offer Badge */
-.offer-badge {
-  background-color: #ff6b35;
-  color: white;
-  font-size: 12px;
-  font-weight: bold;
-  padding: 4px 8px;
-  border-radius: 5px;
-}
 
 /* Original Price (Strike-through) */
 .original-price {
@@ -447,145 +438,54 @@
   position: relative;
   padding: 20px;
 }
-
 .offer-badge {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  background-color: #ff6b35; /* Your chosen color for the offer badge */
+  background-color: #ff6b35; /* Background color for the offer */
   color: white;
-  padding: 10px;
-  border-radius: 5px;
+  font-size: 14px; /* Slightly larger text */
   font-weight: bold;
+  padding: 6px 12px; /* Adjust padding for better readability */
+  border-radius: 8px; /* More rounded corners */
+  display: flex; /* Flexbox to align content */
+  justify-content: space-between; /* Space between offer text and countdown */
+  align-items: center; /* Vertically center the text */
+  margin-bottom: 8px; /* Add space below the badge */
 }
 
+/* Offer Text */
 .offer-text {
-  display: block;
-  font-size: 16px;
+  font-size: 14px;
+  color: white; /* Keep offer text white */
+}
+
+.details-section {
+  position: relative; /* This will be the reference for absolute positioning */
 }
 
 .offer-end-time {
-  display: block;
-  font-size: 14px;
-  margin-top: 5px;
-}
-/* Details Section */
-.details-section {
-  position: relative;
-  padding: 20px;
-  width: 90%;
-  text-align: center;
-}
-
-/* Offer Badge */
-.offer-badge {
   position: absolute;
-  top: 20px;
-  right: 20px;
-  background-color: #ff6b35; /* Your chosen color for the offer badge */
-  color: white;
-  padding: 10px;
-  border-radius: 5px;
-  font-weight: bold;
-  font-size: 14px;
-  z-index: 10; /* Ensure it stays on top */
-  text-align: center;
-  max-width: 150px;
-  white-space: nowrap;
-}
-
-.offer-badge .offer-text {
-  display: block;
-  font-size: 16px;
-}
-
-.offer-badge .offer-end-time {
-  display: block;
+  top: 0;
+  right: 0;
   font-size: 12px;
-  margin-top: 5px;
-}
-/* Offer Badge for Mobile View */
-.offer-badge-mobile {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  background-color: #ff6b35; /* Your chosen color for the offer badge */
-  color: white;
-  padding: 10px;
-  border-radius: 5px;
+  color: rgb(253, 0, 0); /* Keep countdown in red */
   font-weight: bold;
-  font-size: 14px;
-  z-index: 10; /* Ensure it stays above the image */
-  max-width: 150px;
-  white-space: nowrap;
+  background-color: rgba(255, 255, 255, 0.7); /* Optional: Add a slight background to make it stand out */
+  padding: 5px;
 }
-
-.offer-badge-mobile .offer-text {
-  display: block;
-  font-size: 16px;
-}
-
-.offer-badge-mobile .offer-end-time {
-  display: block;
-  font-size: 12px;
-  margin-top: 5px;
-}
-
-/* Offer Badge for Mobile View */
-.offer-badge-mobile {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  background-color: #ff6b35; /* Your chosen color for the offer badge */
-  color: white;
-  padding: 8px;
-  font-size: 14px;
-  font-weight: bold;
-  border-radius: 5px;
-  z-index: 10; /* Ensure it stays above the image */
-  max-width: 150px;
-  white-space: nowrap;
-  display: block;
-}
-/* Offer Badge for Mobile View */
-.offer-badge-mobile {
-  position: absolute;
-  top: 10px;
-  left: 10px; /* Position the badge in the top-left corner */
-  background-color: #ff6b35; /* Your chosen color for the offer badge */
-  color: white;
-  padding: 8px;
-  font-size: 14px;
-  font-weight: bold;
-  border-radius: 5px;
-  z-index: 10; /* Ensure it stays above the image */
-  max-width: 150px;
-  white-space: nowrap;
-  display: block;
-}
-
-@media (min-width: 769px) {
-  .offer-badge-mobile {
-    display: none;
-  }
-}
-
+/* Responsive for smaller screens */
 @media (max-width: 768px) {
-  .image-section {
-    position: relative;
+  .offer-badge {
+    font-size: 12px; /* Adjust font size for mobile */
+    padding: 4px 8px; /* Reduce padding on mobile */
+    flex-direction: column; /* Stack the text vertically on smaller screens */
+    text-align: center; /* Center the text for mobile view */
   }
 
-  .offer-badge-mobile {
-    top: 10px;
-    left: 10px;
-    padding: 8px;
-    font-size: 14px;
-  }
-  .offer-badge {
-    top: -630px;
-    margin-right: 190px;
+  .offer-end-time {
+    margin-top: 4px; /* Add space between offer text and countdown */
   }
 }
+
+
 /* User Details Section */
 .user-details {
   background-color: #f9f9f9;
@@ -679,5 +579,5 @@
   .delivery-days {
     font-size: 13px;
     margin-top: 5px;
-  }
+  } 
 }

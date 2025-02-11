@@ -1,4 +1,5 @@
 import React from 'react';
+import defaultImage from '../../assets/icons/06.jpg';
 import { Card, Button, ListGroup, Row, Col } from 'react-bootstrap';
 import { FaTrashAlt } from 'react-icons/fa';
 
@@ -18,8 +19,8 @@ const CartComponent = ({ cartItems, removeItem, updateQuantity }) => {
             cartItems.map((item, index) => (
               <ListGroup.Item key={index} className="cart-item">
                 <Row className="align-items-center">
-                  <Col xs={1} md={1}>
-                    {/* <img src={item.image} alt={item.name} className="cart-item-image" /> */}
+                  <Col xs={4} md={2} className="d-flex justify-content-center">
+                    {/* <img src={defaultImage} alt={item.name} className="cart-item-image" /> */}
                   </Col>
                   <Col xs={8} md={6}>
                     <div className="cart-item-details">
@@ -31,7 +32,7 @@ const CartComponent = ({ cartItems, removeItem, updateQuantity }) => {
                     </div>
                   </Col>
 
-                  <Col xs={6} md={2} className="d-flex justify-content-end cart-item-controls">
+                  <Col xs={12} md={2} className="d-flex justify-content-end cart-item-controls">
                     <Button
                       variant="outline-secondary"
                       onClick={() => updateQuantity(item.id, item.quantity - 1)}
@@ -62,14 +63,13 @@ const CartComponent = ({ cartItems, removeItem, updateQuantity }) => {
                 </Row>
 
                 <Row className="mt-2 justify-content-center">
-  <Col xs={12} md={6} className="text-center">
-    <p><strong>Delivery By:</strong> <span style={{ color: "blue" }}>{item.deliveryDate}</span></p>
-  </Col>
-  <Col xs={12} md={6} className="text-center">
-    <p><strong>Stocks Left:</strong> <span style={{ color: "brown" }}>{item.stockLeft}</span></p>
-  </Col>
-</Row>
-
+                  <Col xs={12} md={6} className="text-center">
+                    <p><strong>Delivery By:</strong> <span style={{ color: "blue" }}>{item.deliveryDate}</span></p>
+                  </Col>
+                  <Col xs={12} md={6} className="text-center">
+                    <p><strong>Stocks Left:</strong> <span style={{ color: "brown" }}>{item.stockLeft}</span></p>
+                  </Col>
+                </Row>
 
                 <div className="d-flex justify-content-center mt-3">
                   <h6>Total: ₹{item.discountPrice * item.quantity}</h6>
@@ -84,12 +84,10 @@ const CartComponent = ({ cartItems, removeItem, updateQuantity }) => {
         </ListGroup>
 
         {cartItems.length > 0 && (
-    <Card.Footer className="d-flex justify-content-end sticky-footer">
-    <h5 className="me-5">Total: ₹{calculateTotal()}</h5>
-    <Button variant="success" className="checkout-btn">Proceed to Checkout</Button>
-  </Card.Footer>
-
-
+          <Card.Footer className="d-flex justify-content-end sticky-footer">
+            <h5 className="me-5">Total: ₹{calculateTotal()}</h5>
+            <Button variant="success" className="checkout-btn">Proceed to Checkout</Button>
+          </Card.Footer>
         )}
       </Card>
     </div>
