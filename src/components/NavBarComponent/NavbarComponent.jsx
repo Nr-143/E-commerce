@@ -47,6 +47,7 @@ const NavbarComponent = ({ cartItems = [] }) => {
             <Nav.Link as={Link} to="/orders" className="text-white mx-2">
               <FaBoxOpen size={20} color="#6A0DAD" /> Orders
             </Nav.Link>
+
             <Nav.Link as={Link} to="/wishlist" className="text-white mx-2">
               <FaHeart size={20} color="#E0BBE4" /> Wishlist
             </Nav.Link>
@@ -73,7 +74,7 @@ const NavbarComponent = ({ cartItems = [] }) => {
             <FaHome size={22} color="#FF6B35" />
             <div>Home</div>
           </Nav.Link>
-          <Nav.Link as={Link} to="/orders" className="text-white text-center">
+          <Nav.Link as={Link} to="/OrdersPage" className="text-white text-center">
             <FaBoxOpen size={22} color="#6A0DAD" />
             <div>Orders</div>
           </Nav.Link>

@@ -1,0 +1,162 @@
+.placed-orders-container {
+  padding: 20px;
+  background-color: #F9F9F9; /* Cloud White */
+  border-radius: 10px;
+}
+
+h2 {
+  color: #1B1F3B; /* Midnight Blue */
+  margin-bottom: 15px;
+}
+
+.no-orders {
+  text-align: center;
+  color: #6A0DAD; /* Electric Purple */
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.order-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.order-card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.order-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.order-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.order-image {
+  width: 180px !important;  /* Custom Image Size */
+  height: 140px !important;
+  border-radius: 10px;
+  object-fit: cover;
+  border: 2px solid #6A0DAD; /* Electric Purple Border */
+}
+.order-product{
+    color: #388e3c;
+}
+
+.order-info p {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #3A3A3A; /* Graphite Gray */
+}
+
+.order-delivery-date {
+  color: #FF6B35; /* Sunset Orange */
+  font-weight: bold;
+}
+
+.order-address {
+  font-size: 13px;
+  color: #6A0DAD; /* Electric Purple */
+}
+
+.order-status {
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+.status-pending {
+  color: #FF6B35; /* Sunset Orange */
+  font-weight: bold;
+}
+
+.status-shipped {
+  color: #6A0DAD; /* Electric Purple */
+  font-weight: bold;
+}
+
+.status-delivered {
+  color: green;
+  font-weight: bold;
+}
+
+.order-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
+}
+
+.order-price {
+  font-size: 16px;
+  font-weight: bold;
+  color: #1B1F3B; /* Midnight Blue */
+}
+
+.track-order-btn {
+  background: #6A0DAD; /* Electric Purple */
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.track-order-btn:hover {
+  background: #5a0c96;
+  transform: scale(1.05);
+}
+.order-actions {
+  display: flex;
+  justify-content:center;
+  gap:12px;
+  margin-top: 10px;
+}
+
+.cancel-order-btn,
+.help-btn,
+.reorder-btn {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.cancel-order-btn {
+  background: #ff3b30;
+  color: white;
+}
+
+.cancel-order-btn:hover {
+  background: #d32f2f;
+}
+
+.help-btn {
+  background: #ffa726;
+  color: white;
+}
+
+.help-btn:hover {
+  background: #fb8c00;
+}
+
+.reorder-btn {
+  background: #4caf50;
+  color: white;
+}
+
+.reorder-btn:hover {
+  background: #388e3c;
+}

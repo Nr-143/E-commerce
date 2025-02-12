@@ -1,10 +1,10 @@
 // src/pages/CartPage.js
 // import defaultImage from "../../assets/icons/06.jpg"; 
 
-import defaultImage from "../assets/icons/06.jpg"; 
+import defaultImage from "../../assets/icons/06.jpg"; 
 
 import React, { useState } from 'react';
-import CartComponent from '../components/CartComponent/CartComponent';
+import CartComponent from '../../components/CartComponent/CartComponent';
 
 const CartPage = () => {
   // Sample cart items
