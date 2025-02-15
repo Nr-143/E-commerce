@@ -72,14 +72,14 @@ const CartComponent = ({ cartItems, removeItem, updateQuantity }) => {
                   </Col>
                 </Row>
 
-                <Row className="mt-2 justify-content-center">
+                {/* <Row className="mt-2 justify-content-center">
                   <Col xs={12} md={6} className="text-center">
                     <p><strong>Delivery By:</strong> <span style={{ color: "blue" }}>{item.deliveryDate}</span></p>
                   </Col>
                   <Col xs={12} md={6} className="text-center">
                     <p><strong>Stocks Left:</strong> <span style={{ color: "brown" }}>{item.stockLeft}</span></p>
                   </Col>
-                </Row>
+                </Row> */}
 
                 <div className="d-flex justify-content-center mt-3">
                   <h6>Total: ₹{item.discountPrice * item.quantity}</h6>

@@ -1,3 +1,7 @@
+body {
+  padding-top: 70px; /* Adjust this value based on your navbar height */
+  box-sizing: border-box;
+}
 .placed-orders-container {
   padding: 20px;
   background-color: #F9F9F9; /* Cloud White */
@@ -37,7 +41,7 @@ h2 {
 }
 
 .order-header {
-  display: flex;
+  /* display: flex; */
   align-items: center;
   gap: 15px;
 }
@@ -47,10 +51,13 @@ h2 {
   height: 140px !important;
   border-radius: 10px;
   object-fit: cover;
-  border: 2px solid #6A0DAD; /* Electric Purple Border */
+  border: 2px solid #000000; /* Electric Purple Border */
 }
-.order-product{
-    color: #388e3c;
+.order-productName{
+    color: #0339e7 !important;
+}
+.order-productId{
+  color: #F9F9F9;
 }
 
 .order-info p {
@@ -159,4 +166,35 @@ h2 {
 
 .reorder-btn:hover {
   background: #388e3c;
+}
+
+.status-delivered{
+  background-color: #388e3c;
+  color: white;
+  width: fit-content;
+  margin-left: 2%;
+    border-radius: 5px;
+      padding: 5px 10px;
+
+
+}
+.status-shipped,
+.status-outnow,
+.status-ordered {
+  background-color: red;
+  color: white;
+  padding: 5px 10px;
+  margin-left: 2%;
+  border-radius: 5px;
+  animation: blink 1s infinite alternate;
+}
+
+/* Blinking Animation */
+@keyframes blink {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.3;
+  }
 }

@@ -19,8 +19,7 @@ function App() {
   return (
     <>
       {/* Navbar and Routes */}
-      <NavbarComponent openTermsModal={openTermsModal} />
-
+      <NavbarComponent />
       <Routes>
         <Route
           path="/"

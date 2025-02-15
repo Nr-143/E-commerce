@@ -57,6 +57,10 @@
   .mobile-bottom-nav .nav-link:focus {
     color: #FF6B35; /* Highlight color */
   }
+/* App.css or NavbarComponent.css */
+.main-content {
+  padding-top: 70px; /* Adjust if necessary based on navbar height */
+}
 
   .mobile-bottom-nav .nav-link div {
     font-size: 12px;

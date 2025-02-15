@@ -14,7 +14,6 @@ const HomePage = () => {
   useEffect(() => {
     const fetchProductsData = async () => {
       try {
-        // Simulated API response
         let data = [
           {
             id: 1,
@@ -26,24 +25,39 @@ const HomePage = () => {
             discount: 20,
             ratings: 4.5,
             isInCart: false,
-            deliveryFee:300,
+            deliveryFee: 300,
             category: "groceries",
           },
-  {
-  "id": 101,
-  "name": "Casual Cotton Shirt",
-  "brand": "Urban Wear",
-  "image": "https://via.placeholder.com/150",
-  "oldPrice": 1200,
-  "price": 999,
-  "discount": 17,
-  "ratings": 4.3,
-  "deliveryFee": 0,
-  "size": ["S", "M", "L", "XL"],
-  "isInCart": false,
-  "offerEndTime": "2025-03-12T23:59:59Z",
-  "category": "clothing"
-         },
+          {
+            "id": 101,
+            "name": "Casual Cotton Shirt",
+            "brand": "Urban Wear",
+            "image": "https://via.placeholder.com/150",
+            "oldPrice": 1200,
+            "price": 999,
+            "discount": 17,
+            "ratings": 4.3,
+            "deliveryFee": 0,
+            "size": ["S", "M", "L", "XL"],
+            "isInCart": false,
+            "offerEndTime": "2025-03-12T23:59:59Z",
+            "category": "clothing"
+          },
+          {
+            "id": 101,
+            "name": "Casual Cotton Shirt",
+            "brand": "Urban Wear",
+            "image": "https://via.placeholder.com/150",
+            "oldPrice": 1200,
+            "price": 999,
+            "discount": 17,
+            "ratings": 4.3,
+            "deliveryFee": 0,
+            "size": ["S", "M", "L", "XL"],
+            "isInCart": false,
+            "offerEndTime": "2025-03-12T23:59:59Z",
+            "category": "clothing"
+          },
           {
             id: 201,
             name: "Wireless Bluetooth Headphones",
@@ -53,7 +67,7 @@ const HomePage = () => {
             price: 2999,
             discount: 14,
             ratings: 4.7,
-            deliveryFee:300,
+            deliveryFee: 300,
             warranty: "1 Year",
             isInCart: false,
             category: "electronics",
@@ -63,9 +77,9 @@ const HomePage = () => {
             name: "Fresh Bananas",
             brand: "Tropical Farms",
             image: "https://via.placeholder.com/150",
-            oldPrice:null,
+            oldPrice: null,
             price: 60,
-            discount:0,
+            discount: 0,
             ratings: null,
             isInCart: false,
             category: "groceries",
@@ -106,7 +120,7 @@ const HomePage = () => {
             discount: 20,
             ratings: 4.3,
             isInCart: false,
-            category: "groceries",
+            category: "Clothing",
           },
           {
             id: 103,
@@ -132,7 +146,7 @@ const HomePage = () => {
             ratings: 4.6,
             warranty: "6 Months",
             isInCart: false,
-            category: "electronics",
+            category: "kids",
           },
           {
             id: 4,
@@ -144,7 +158,7 @@ const HomePage = () => {
             discount: 20,
             ratings: 4.4,
             isInCart: false,
-            category: "groceries",
+            category: "books",
           },
           {
             id: 104,
@@ -157,7 +171,7 @@ const HomePage = () => {
             ratings: 4.7,
             size: ["S", "M", "L"],
             isInCart: false,
-            category: "clothing",
+            category: "women",
           },
           {
             id: 204,
@@ -170,7 +184,7 @@ const HomePage = () => {
             ratings: 4.5,
             warranty: "1 Year",
             isInCart: false,
-            category: "electronics",
+            category: "men",
           },
           {
             id: 5,
@@ -182,7 +196,7 @@ const HomePage = () => {
             discount: 25,
             ratings: 4.2,
             isInCart: false,
-            category: "groceries",
+            category: "gifts",
           },
           {
             id: 105,
@@ -194,6 +208,32 @@ const HomePage = () => {
             discount: 12,
             ratings: 4.4,
             size: ["40", "41", "42", "43"],
+            isInCart: false,
+            category: "Groceries",
+          },
+          {
+            id: 205,
+            name: "Smart LED TV",
+            brand: "VisionPro",
+            image: "https://via.placeholder.com/150",
+            oldPrice: 35000,
+            price: 29999,
+            discount: 14,
+            ratings: 4.9,
+            warranty: "2 Years",
+            isInCart: false,
+            category: "mobiles",
+          },
+          {
+            id: 205,
+            name: "Smart LED TV",
+            brand: "VisionPro",
+            image: "https://via.placeholder.com/150",
+            oldPrice: 35000,
+            price: 29999,
+            discount: 14,
+            ratings: 4.9,
+            warranty: "2 Years",
             isInCart: false,
             category: "clothing",
           },
@@ -208,7 +248,7 @@ const HomePage = () => {
             ratings: 4.9,
             warranty: "2 Years",
             isInCart: false,
-            category: "electronics",
+            category: "clothing",
           },
         ];
 
@@ -235,7 +275,7 @@ const HomePage = () => {
       >
         <div className="categories-scroll-container">
           {[
-            "Dress",
+            "Clothing",
             "Groceries",
             "Electronics",
             "Mobiles",
@@ -254,29 +294,274 @@ const HomePage = () => {
       </section>
 
       {/* Featured Products Section */}
-      <section className="products-section mt-1">
-        <h2 className="section-title mb-4 text-center">
-          <i className="fas fa-star text-warning"></i> Featured Products
-        </h2>
-        <div className="row">
-          {loading ? (
-            <p className="text-center">Loading products...</p>
-          ) : error ? (
-            <p className="text-center text-danger">{error}</p>
-          ) : products.length > 0 ? (
-            products.map((product) => {
-              return (
-<div className="MobileSet col-12 col-md-3" key={product.id}>
-    <ProductCard product={product} />
-</div>
 
-              );
-            })
-          ) : (
-            <p className="text-center">No products available.</p>
-          )}
-        </div>
-      </section>
+      <div className="filter Cloths">
+        <section className="products-section mt-1">
+          <h2 className="section-title mb-4 text-center">
+            <i className="fas fa-tshirt text-warning"></i> Clothes
+          </h2>
+          <div className="row">
+            {loading ? (
+              <p className="text-center">Loading products...</p>
+            ) : error ? (
+              <p className="text-center text-danger">{error}</p>
+            ) : (
+              (() => {
+                const clothingProducts = products.filter(
+                  (product) => product.category?.toLowerCase() === "clothing"
+                );
+                return clothingProducts.length > 0 ? (
+                  clothingProducts.map((product) => (
+                    <div className="MobileSet col-12 col-md-3" key={product.id}>
+                      <ProductCard product={product} />
+                    </div>
+                  ))
+                ) : (
+                  <p className="text-center">No clothing products available.</p>
+                );
+              })()
+            )}
+          </div>
+        </section>
+      </div>
+
+
+      <div className="filter Groceries">
+        <section className="products-section mt-1">
+          <h2 className="section-title mb-4 text-center">
+            <i className="fas fa-tshirt text-warning"></i> Groceries
+          </h2>
+          <div className="row">
+            {loading ? (
+              <p className="text-center">Loading products...</p>
+            ) : error ? (
+              <p className="text-center text-danger">{error}</p>
+            ) : (
+              (() => {
+                const clothingProducts = products.filter(
+                  (product) => product.category?.toLowerCase() === "groceries"
+                );
+                return clothingProducts.length > 0 ? (
+                  clothingProducts.map((product) => (
+                    <div className="MobileSet col-12 col-md-3" key={product.id}>
+                      <ProductCard product={product} />
+                    </div>
+                  ))
+                ) : (
+                  <p className="text-center">No Groceries products available.</p>
+                );
+              })()
+            )}
+          </div>
+        </section>
+      </div>
+
+      <div className="filter Electronics">
+        <section className="products-section mt-1">
+          <h2 className="section-title mb-4 text-center">
+            <i className="fas fa-tshirt text-warning"></i> Electronics
+          </h2>
+          <div className="row">
+            {loading ? (
+              <p className="text-center">Loading products...</p>
+            ) : error ? (
+              <p className="text-center text-danger">{error}</p>
+            ) : (
+              (() => {
+                const clothingProducts = products.filter(
+                  (product) => product.category?.toLowerCase() === "electronics"
+                );
+                return clothingProducts.length > 0 ? (
+                  clothingProducts.map((product) => (
+                    <div className="MobileSet col-12 col-md-3" key={product.id}>
+                      <ProductCard product={product} />
+                    </div>
+                  ))
+                ) : (
+                  <p className="text-center">No Electronics products available.</p>
+                );
+              })()
+            )}
+          </div>
+        </section>
+      </div>
+
+      <div className="filter Mobiles">
+        <section className="products-section mt-1">
+          <h2 className="section-title mb-4 text-center">
+            <i className="fas fa-tshirt text-warning"></i> Mobiles
+          </h2>
+          <div className="row">
+            {loading ? (
+              <p className="text-center">Loading products...</p>
+            ) : error ? (
+              <p className="text-center text-danger">{error}</p>
+            ) : (
+              (() => {
+                const clothingProducts = products.filter(
+                  (product) => product.category?.toLowerCase() === "mobiles"
+                );
+                return clothingProducts.length > 0 ? (
+                  clothingProducts.map((product) => (
+                    <div className="MobileSet col-12 col-md-3" key={product.id}>
+                      <ProductCard product={product} />
+                    </div>
+                  ))
+                ) : (
+                  <p className="text-center">No Mobiles products available.</p>
+                );
+              })()
+            )}
+          </div>
+        </section>
+      </div>
+
+      <div className="filter Gifts">
+        <section className="products-section mt-1">
+          <h2 className="section-title mb-4 text-center">
+            <i className="fas fa-tshirt text-warning"></i> Gifts
+          </h2>
+          <div className="row">
+            {loading ? (
+              <p className="text-center">Loading products...</p>
+            ) : error ? (
+              <p className="text-center text-danger">{error}</p>
+            ) : (
+              (() => {
+                const clothingProducts = products.filter(
+                  (product) => product.category?.toLowerCase() === "gifts"
+                );
+                return clothingProducts.length > 0 ? (
+                  clothingProducts.map((product) => (
+                    <div className="MobileSet col-12 col-md-3" key={product.id}>
+                      <ProductCard product={product} />
+                    </div>
+                  ))
+                ) : (
+                  <p className="text-center">No Gifts products available.</p>
+                );
+              })()
+            )}
+          </div>
+        </section>
+      </div>
+
+      <div className="filter Men">
+        <section className="products-section mt-1">
+          <h2 className="section-title mb-4 text-center">
+            <i className="fas fa-tshirt text-warning"></i> Men
+          </h2>
+          <div className="row">
+            {loading ? (
+              <p className="text-center">Loading products...</p>
+            ) : error ? (
+              <p className="text-center text-danger">{error}</p>
+            ) : (
+              (() => {
+                const clothingProducts = products.filter(
+                  (product) => product.category?.toLowerCase() === "men"
+                );
+                return clothingProducts.length > 0 ? (
+                  clothingProducts.map((product) => (
+                    <div className="MobileSet col-12 col-md-3" key={product.id}>
+                      <ProductCard product={product} />
+                    </div>
+                  ))
+                ) : (
+                  <p className="text-center">No Men products available.</p>
+                );
+              })()
+            )}
+          </div>
+        </section>
+      </div>
+      <div className="filter Women">
+        <section className="products-section mt-1">
+          <h2 className="section-title mb-4 text-center">
+            <i className="fas fa-tshirt text-warning"></i> Women
+          </h2>
+          <div className="row">
+            {loading ? (
+              <p className="text-center">Loading products...</p>
+            ) : error ? (
+              <p className="text-center text-danger">{error}</p>
+            ) : (
+              (() => {
+                const clothingProducts = products.filter(
+                  (product) => product.category?.toLowerCase() === "women"
+                );
+                return clothingProducts.length > 0 ? (
+                  clothingProducts.map((product) => (
+                    <div className="MobileSet col-12 col-md-3" key={product.id}>
+                      <ProductCard product={product} />
+                    </div>
+                  ))
+                ) : (
+                  <p className="text-center">No Women products available.</p>
+                );
+              })()
+            )}
+          </div>
+        </section>
+      </div>
+      <div className="filter Books">
+        <section className="products-section mt-1">
+          <h2 className="section-title mb-4 text-center">
+            <i className="fas fa-tshirt text-warning"></i> Books
+          </h2>
+          <div className="row">
+            {loading ? (
+              <p className="text-center">Loading products...</p>
+            ) : error ? (
+              <p className="text-center text-danger">{error}</p>
+            ) : (
+              (() => {
+                const clothingProducts = products.filter(
+                  (product) => product.category?.toLowerCase() === "books"
+                );
+                return clothingProducts.length > 0 ? (
+                  clothingProducts.map((product) => (
+                    <div className="MobileSet col-12 col-md-3" key={product.id}>
+                      <ProductCard product={product} />
+                    </div>
+                  ))
+                ) : (
+                  <p className="text-center">No Books products available.</p>
+                );
+              })()
+            )}
+          </div>
+        </section>
+      </div>
+      <div className="filter Kids">
+        <section className="products-section mt-1">
+          <h2 className="section-title mb-4 text-center">
+            <i className="fas fa-tshirt text-warning"></i> Kids
+          </h2>
+          <div className="row">
+            {loading ? (
+              <p className="text-center">Loading products...</p>
+            ) : error ? (
+              <p className="text-center text-danger">{error}</p>
+            ) : (
+              (() => {
+                const clothingProducts = products.filter(
+                  (product) => product.category?.toLowerCase() === "kids"
+                );
+                return clothingProducts.length > 0 ? (
+                  clothingProducts.map((product) => (
+                    <div className="MobileSet col-12 col-md-3" key={product.id}>
+                      <ProductCard product={product} />
+                    </div>
+                  ))
+                ) : (
+                  <p className="text-center">No Kids products available.</p>
+                );
+              })()
+            )}
+          </div>
+        </section>
+      </div>
 
       {/* About Us Section */}
       <section className="about-us-section mt-5">

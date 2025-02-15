@@ -15,7 +15,7 @@ const NavbarComponent = ({ cartItems = [] }) => {
   return (
     <>
       {/* Desktop Navbar */}
-      <Navbar bg="dark" variant="dark" expand="lg" className="py-2 shadow-sm" >
+      <Navbar bg="dark" variant="dark" expand="lg" fixed="top" className="py-2 shadow-sm">
         <Container className="d-flex flex-column flex-lg-row align-items-center justify-content-between">
           {/* Logo */}
         <div className="me-auto">
@@ -44,12 +44,12 @@ const NavbarComponent = ({ cartItems = [] }) => {
               <FaHome size={15} color="#FF6B35" /> Home
             </Nav.Link>
             <Nav.Link as={Link} to="/cart" className="text-white position-relative mx-2">
-              <FaShoppingCart size={20} color="#FF6B35" />
+              <FaShoppingCart size={15} color="#FF6B35" />
               {cartItems.length > 0 && (
                 <Badge pill bg="danger" className="position-absolute top-0 start-100 translate-middle">
                   {cartItems.length}
                 </Badge>
-              )}
+              )} Cart
             </Nav.Link>
             <Nav.Link as={Link} to="/orders" className="text-white mx-2">
               <FaBoxOpen size={15} color="#6A0DAD" /> Orders
@@ -69,7 +69,7 @@ const NavbarComponent = ({ cartItems = [] }) => {
       </Navbar>
 
       {/* Search Bar for Mobile */}
-      <div className="d-lg-none w-100 px-3 mt-2">
+      <div className="d-lg-none w-100 px-1  ">
         <AnimatedTextArea
           value={searchQuery}
           setQuery={setSearchQuery}
@@ -84,7 +84,7 @@ const NavbarComponent = ({ cartItems = [] }) => {
             <FaHome size={22} color="#FF6B35" />
             <div>Home</div>
           </Nav.Link>
-          <Nav.Link as={Link} to="/OrdersPage" className="text-white text-center">
+          <Nav.Link as={Link} to="/orders" className="text-white text-center">
             <FaBoxOpen size={22} color="#6A0DAD" />
             <div>Orders</div>
           </Nav.Link>

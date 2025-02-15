@@ -1,3 +1,8 @@
+
+body {
+  padding-top: 70px; /* Adjust this value based on your navbar height */
+  box-sizing: border-box;
+}
 .modal-overlay {
     position: fixed;
     top: 70px;
