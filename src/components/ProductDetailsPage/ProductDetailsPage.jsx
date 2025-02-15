@@ -265,6 +265,13 @@ const ProductDetailsPage = () => {
             </span>
           </div>
           
+          <div className="image-counter-and-buttons">
+            <div className="buy-add-buttons">
+              <button className="buy-now-button">Buy Now</button>
+              <button className="add-to-cart-button">Add to Cart</button>
+            </div>
+          </div>
+
           <div className="user-details">
             <h3>Delivery Address</h3>
             <div className="user-info">
@@ -284,12 +291,7 @@ const ProductDetailsPage = () => {
           </div>
 
           {/* Total Images and Buy/Add to Cart Buttons */}
-          <div className="image-counter-and-buttons">
-            <div className="buy-add-buttons">
-              <button className="buy-now-button">Buy Now</button>
-              <button className="add-to-cart-button">Add to Cart</button>
-            </div>
-          </div>
+   
         </div>
 
         {/* Product Info Section */}

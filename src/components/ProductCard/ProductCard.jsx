@@ -44,14 +44,14 @@ const ProductCard = ({ product, addToCart }) => {
           </div>
           <div className="rating-sold">
             <div className="rating-points">{product.ratings || 0} / 5</div>
-            <div className="rating-stars desktop-only">{renderStars(product.ratings)}</div>
+            <div className="rating-stars desktop-only" style={{ color: "#FFD700" }}>{renderStars(product.ratings)}</div>
             <div className="sold-info">{product.sold || 0} sold</div>
           </div>
         </div>
       </Link>
       <div className="action-buttons action-buttons-row">
-        <button className="btn btn-cart" onClick={e => {e.stopPropagation(); addToCart(product);}}>Add to Cart</button>
-        <button className="btn btn-buy">Buy Now</button>
+        <button className="btn btn-cart" style={{ background: "#1B1F3B", color: "white" }} onClick={e => { e.stopPropagation(); addToCart(product); }}>Add to Cart</button>
+        <button className="btn btn-buy" style={{ background: "#FF6B35", color: "white" }}>Buy Now</button>
       </div>
     </div>
   );

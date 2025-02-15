@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Navbar, Nav, Container, Badge } from "react-bootstrap";
+import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import AnimatedTextArea from "../AnimatedTextArea/AnimateTextArea";
 import { FaShoppingCart, FaHome, FaBoxOpen, FaSignInAlt, FaHeart } from "react-icons/fa";
@@ -11,6 +12,11 @@ const NavbarComponent = ({ cartItems = [] }) => {
   const handleSearch = () => {
     console.log("Searching for:", searchQuery);
   };
+  useEffect(() => {
+    if (!location.pathname.startsWith("/search")) {
+      setSearchQuery("");
+    }
+  }, [location]);
 
   return (
     <>
@@ -18,16 +24,16 @@ const NavbarComponent = ({ cartItems = [] }) => {
       <Navbar bg="dark" variant="dark" expand="lg" fixed="top" className="py-2 shadow-sm">
         <Container className="d-flex flex-column flex-lg-row align-items-center justify-content-between">
           {/* Logo */}
-        <div className="me-auto">
-      <Navbar.Brand 
-        as={Link} 
-        to="/" 
-        className="text-white fw-bold fs-5  " 
-        style={{ paddingLeft: "10px" }}
-      >
-        🛍 DailyMart
-      </Navbar.Brand>
-    </div>
+          <div className="me-auto">
+            <Navbar.Brand
+              as={Link}
+              to="/"
+              className="text-white fw-bold fs-5  "
+              style={{ paddingLeft: "10px" }}
+            >
+              🛍 DailyMart
+            </Navbar.Brand>
+          </div>
 
           {/* Search Bar for Desktop */}
           <div className="d-none d-lg-block flex-grow-1 mx-7">
@@ -58,11 +64,11 @@ const NavbarComponent = ({ cartItems = [] }) => {
             <Nav.Link as={Link} to="/wishlist" className="text-white mx-2">
               <FaHeart size={15} color="#E0BBE4" /> Wishlist
             </Nav.Link>
-                        <Nav.Link as={Link} to="/wishlist" className="text-white mx-2">
+            <Nav.Link as={Link} to="/wishlist" className="text-white mx-2">
               <FaHeart size={15} color="#E0BBE4" /> Became a Seller
             </Nav.Link>
             <Nav.Link as={Link} to="/login" className="text-white mx-2">
-              <FaSignInAlt size={15} color="#F9F9F9" /> Login
+              <FaSignInAlt size={15} color="#F9F9F9" /> Account
             </Nav.Link>
           </Nav>
         </Container>
@@ -103,7 +109,7 @@ const NavbarComponent = ({ cartItems = [] }) => {
           </Nav.Link>
           <Nav.Link as={Link} to="/login" className="text-white text-center">
             <FaSignInAlt size={22} color="#F9F9F9" />
-            <div>Login</div>
+            <div>Account</div>
           </Nav.Link>
         </Nav>
       </div>

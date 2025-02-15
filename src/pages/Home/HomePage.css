@@ -92,7 +92,8 @@ body {
 }
 
 .products-section {
-  padding: 20px;
+  /* padding: 20px; */
+  margin-top: 1%;
   background-color: #f9f9f9;
   margin-bottom: 20px;
 }
@@ -216,8 +217,11 @@ body {
 }
 
 @media (max-width: 768px) {
-  .product-container {
-    grid-template-columns: 1fr; 
+ 
+  .product-card-wrapper {
+  flex: 0 0 auto; /* Prevent cards from shrinking or growing */
+  width: 100%; /* Fixed width for each product card */
+
   }
 }
 
@@ -225,6 +229,24 @@ body {
   .product-container {
     grid-template-columns: repeat(4, 1fr);
   } 
+
+  products-scroll-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 16px;
+  padding: 10px;
+}
+  .product-card-wrapper {
+  flex: 0 0 auto; /* Prevent cards from shrinking or growing */
+  width: 25%; /* Fixed width for each product card */
+}
+
+.product-card-wrapper {
+  flex: 0 0 25%; /* Two items per row */
+  max-width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+}
 
   .MobileSet {
     flex: 0 0 auto;
@@ -247,12 +269,6 @@ div a {
   padding: 10px;
 }
 
-.product-card-wrapper {
-  flex: 0 0 50%; /* Two items per row */
-  max-width: 100%;
-  box-sizing: border-box;
-  padding: 10px;
-}
 
 
 .filter {
@@ -288,4 +304,47 @@ div a {
 .MobileSet {
   min-width: 250px; 
   height: auto;
+}
+/* Products Scroll Container */
+.products-scroll-container {
+  display: flex;
+  overflow-x: auto;
+  gap: 16px; /* Space between product cards */
+  padding: 10px;
+  scrollbar-width: thin; /* For Firefox */
+  scrollbar-color: #ccc transparent;
+}
+
+.products-scroll-container::-webkit-scrollbar {
+  height: 6px; /* Scrollbar height for horizontal scrolling */
+}
+
+.products-scroll-container::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 10px;
+}
+
+/* Product Card Wrapper */
+
+
+/* Category Card Active State */
+.category-card.active {
+  border: 2px solid #ff6b35; /* Highlight border */
+  background-color: #ff6b35; /* Highlight background */
+  color: white; /* Highlight text color */
+}
+.scrolling-text {
+  white-space: nowrap;
+  overflow: hidden;
+  display: block;
+  animation: scroll-left 10s linear infinite;
+}
+
+@keyframes scroll-left {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
 }

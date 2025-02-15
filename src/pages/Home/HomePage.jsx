@@ -1,7 +1,7 @@
 import "./HomePage.css";
-import React, { useEffect, useState } from "react";
-import { fetchProducts } from "../../api/api"; // Import API function (optional)
-import TermsModal from "../../components/TermsModal/TermsModal.jsx"; // Import TermsModal
+import React, { useEffect, useState, useRef } from "react";
+import { fetchProducts } from "../../api/api";
+import TermsModal from "../../components/TermsModal/TermsModal.jsx";
 import ProductCard from "../../components/ProductCard/ProductCard.jsx";
 import { Link } from "react-router-dom";
 
@@ -9,11 +9,27 @@ const HomePage = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [isModalOpen, setModalOpen] = useState(false); // FIXED: Undefined state
+  const [isModalOpen, setModalOpen] = useState(false);
+  const [activeCategory, setActiveCategory] = useState(null);
+
+  // Create refs for each category section
+  const categoryRefs = {
+    Clothing: useRef(null),
+    Groceries: useRef(null),
+    Electronics: useRef(null),
+    Mobiles: useRef(null),
+    Gifts: useRef(null),
+    Men: useRef(null),
+    Women: useRef(null),
+    Books: useRef(null),
+    Kids: useRef(null),
+    Service: useRef(null),
+  };
 
   useEffect(() => {
     const fetchProductsData = async () => {
       try {
+        // Simulated API response
         let data = [
           {
             id: 1,
@@ -251,7 +267,6 @@ const HomePage = () => {
             category: "clothing",
           },
         ];
-
         setProducts(data);
         setLoading(false);
       } catch (err) {
@@ -266,9 +281,34 @@ const HomePage = () => {
   const openTermsModal = () => setModalOpen(true);
   const closeTermsModal = () => setModalOpen(false);
 
+  // Handle category click
+  const handleCategoryClick = (category) => {
+    setActiveCategory(category);
+    categoryRefs[category].current.scrollIntoView({ behavior: "smooth" });
+  };
+
+  // Reusable function to render products for a given category
+  const renderProductsByCategory = (category) => {
+    const filteredProducts = products.filter(
+      (product) => product.category?.toLowerCase() === category.toLowerCase()
+    );
+
+    if (filteredProducts.length === 0) {
+      return <p className="text-center">No {category} products available.</p>;
+    }
+
+    return filteredProducts.map((product) => (
+      <div className="product-card-wrapper" key={product.id}>
+        <ProductCard product={product} />
+      </div>
+    ));
+  };
+
   return (
     <div className="homepage-container">
       {/* Categories Section */}
+
+
       <section
         className="categories-section mt-5"
         style={{ border: "1px solid tomato " }}
@@ -286,282 +326,39 @@ const HomePage = () => {
             "Kids",
             "Service",
           ].map((category, index) => (
-            <div className="category-card" key={index}>
+            <div
+              className={`category-card ${activeCategory === category ? "active" : ""}`}
+              key={index}
+              onClick={() => handleCategoryClick(category)}
+            >
               <h5 className="text-white">{category}</h5>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Featured Products Section */}
-
-      <div className="filter Cloths">
-        <section className="products-section mt-1">
-          <h2 className="section-title mb-4 text-center">
-            <i className="fas fa-tshirt text-warning"></i> Clothes
-          </h2>
-          <div className="row">
-            {loading ? (
-              <p className="text-center">Loading products...</p>
-            ) : error ? (
-              <p className="text-center text-danger">{error}</p>
-            ) : (
-              (() => {
-                const clothingProducts = products.filter(
-                  (product) => product.category?.toLowerCase() === "clothing"
-                );
-                return clothingProducts.length > 0 ? (
-                  clothingProducts.map((product) => (
-                    <div className="MobileSet col-12 col-md-3" key={product.id}>
-                      <ProductCard product={product} />
-                    </div>
-                  ))
-                ) : (
-                  <p className="text-center">No clothing products available.</p>
-                );
-              })()
-            )}
-          </div>
-        </section>
-      </div>
-
-
-      <div className="filter Groceries">
-        <section className="products-section mt-1">
-          <h2 className="section-title mb-4 text-center">
-            <i className="fas fa-tshirt text-warning"></i> Groceries
-          </h2>
-          <div className="row">
-            {loading ? (
-              <p className="text-center">Loading products...</p>
-            ) : error ? (
-              <p className="text-center text-danger">{error}</p>
-            ) : (
-              (() => {
-                const clothingProducts = products.filter(
-                  (product) => product.category?.toLowerCase() === "groceries"
-                );
-                return clothingProducts.length > 0 ? (
-                  clothingProducts.map((product) => (
-                    <div className="MobileSet col-12 col-md-3" key={product.id}>
-                      <ProductCard product={product} />
-                    </div>
-                  ))
-                ) : (
-                  <p className="text-center">No Groceries products available.</p>
-                );
-              })()
-            )}
-          </div>
-        </section>
-      </div>
-
-      <div className="filter Electronics">
-        <section className="products-section mt-1">
-          <h2 className="section-title mb-4 text-center">
-            <i className="fas fa-tshirt text-warning"></i> Electronics
-          </h2>
-          <div className="row">
-            {loading ? (
-              <p className="text-center">Loading products...</p>
-            ) : error ? (
-              <p className="text-center text-danger">{error}</p>
-            ) : (
-              (() => {
-                const clothingProducts = products.filter(
-                  (product) => product.category?.toLowerCase() === "electronics"
-                );
-                return clothingProducts.length > 0 ? (
-                  clothingProducts.map((product) => (
-                    <div className="MobileSet col-12 col-md-3" key={product.id}>
-                      <ProductCard product={product} />
-                    </div>
-                  ))
-                ) : (
-                  <p className="text-center">No Electronics products available.</p>
-                );
-              })()
-            )}
-          </div>
-        </section>
-      </div>
-
-      <div className="filter Mobiles">
-        <section className="products-section mt-1">
-          <h2 className="section-title mb-4 text-center">
-            <i className="fas fa-tshirt text-warning"></i> Mobiles
-          </h2>
-          <div className="row">
-            {loading ? (
-              <p className="text-center">Loading products...</p>
-            ) : error ? (
-              <p className="text-center text-danger">{error}</p>
-            ) : (
-              (() => {
-                const clothingProducts = products.filter(
-                  (product) => product.category?.toLowerCase() === "mobiles"
-                );
-                return clothingProducts.length > 0 ? (
-                  clothingProducts.map((product) => (
-                    <div className="MobileSet col-12 col-md-3" key={product.id}>
-                      <ProductCard product={product} />
-                    </div>
-                  ))
-                ) : (
-                  <p className="text-center">No Mobiles products available.</p>
-                );
-              })()
-            )}
-          </div>
-        </section>
-      </div>
-
-      <div className="filter Gifts">
-        <section className="products-section mt-1">
-          <h2 className="section-title mb-4 text-center">
-            <i className="fas fa-tshirt text-warning"></i> Gifts
-          </h2>
-          <div className="row">
-            {loading ? (
-              <p className="text-center">Loading products...</p>
-            ) : error ? (
-              <p className="text-center text-danger">{error}</p>
-            ) : (
-              (() => {
-                const clothingProducts = products.filter(
-                  (product) => product.category?.toLowerCase() === "gifts"
-                );
-                return clothingProducts.length > 0 ? (
-                  clothingProducts.map((product) => (
-                    <div className="MobileSet col-12 col-md-3" key={product.id}>
-                      <ProductCard product={product} />
-                    </div>
-                  ))
-                ) : (
-                  <p className="text-center">No Gifts products available.</p>
-                );
-              })()
-            )}
-          </div>
-        </section>
-      </div>
-
-      <div className="filter Men">
-        <section className="products-section mt-1">
-          <h2 className="section-title mb-4 text-center">
-            <i className="fas fa-tshirt text-warning"></i> Men
-          </h2>
-          <div className="row">
-            {loading ? (
-              <p className="text-center">Loading products...</p>
-            ) : error ? (
-              <p className="text-center text-danger">{error}</p>
-            ) : (
-              (() => {
-                const clothingProducts = products.filter(
-                  (product) => product.category?.toLowerCase() === "men"
-                );
-                return clothingProducts.length > 0 ? (
-                  clothingProducts.map((product) => (
-                    <div className="MobileSet col-12 col-md-3" key={product.id}>
-                      <ProductCard product={product} />
-                    </div>
-                  ))
-                ) : (
-                  <p className="text-center">No Men products available.</p>
-                );
-              })()
-            )}
-          </div>
-        </section>
-      </div>
-      <div className="filter Women">
-        <section className="products-section mt-1">
-          <h2 className="section-title mb-4 text-center">
-            <i className="fas fa-tshirt text-warning"></i> Women
-          </h2>
-          <div className="row">
-            {loading ? (
-              <p className="text-center">Loading products...</p>
-            ) : error ? (
-              <p className="text-center text-danger">{error}</p>
-            ) : (
-              (() => {
-                const clothingProducts = products.filter(
-                  (product) => product.category?.toLowerCase() === "women"
-                );
-                return clothingProducts.length > 0 ? (
-                  clothingProducts.map((product) => (
-                    <div className="MobileSet col-12 col-md-3" key={product.id}>
-                      <ProductCard product={product} />
-                    </div>
-                  ))
-                ) : (
-                  <p className="text-center">No Women products available.</p>
-                );
-              })()
-            )}
-          </div>
-        </section>
-      </div>
-      <div className="filter Books">
-        <section className="products-section mt-1">
-          <h2 className="section-title mb-4 text-center">
-            <i className="fas fa-tshirt text-warning"></i> Books
-          </h2>
-          <div className="row">
-            {loading ? (
-              <p className="text-center">Loading products...</p>
-            ) : error ? (
-              <p className="text-center text-danger">{error}</p>
-            ) : (
-              (() => {
-                const clothingProducts = products.filter(
-                  (product) => product.category?.toLowerCase() === "books"
-                );
-                return clothingProducts.length > 0 ? (
-                  clothingProducts.map((product) => (
-                    <div className="MobileSet col-12 col-md-3" key={product.id}>
-                      <ProductCard product={product} />
-                    </div>
-                  ))
-                ) : (
-                  <p className="text-center">No Books products available.</p>
-                );
-              })()
-            )}
-          </div>
-        </section>
-      </div>
-      <div className="filter Kids">
-        <section className="products-section mt-1">
-          <h2 className="section-title mb-4 text-center">
-            <i className="fas fa-tshirt text-warning"></i> Kids
-          </h2>
-          <div className="row">
-            {loading ? (
-              <p className="text-center">Loading products...</p>
-            ) : error ? (
-              <p className="text-center text-danger">{error}</p>
-            ) : (
-              (() => {
-                const clothingProducts = products.filter(
-                  (product) => product.category?.toLowerCase() === "kids"
-                );
-                return clothingProducts.length > 0 ? (
-                  clothingProducts.map((product) => (
-                    <div className="MobileSet col-12 col-md-3" key={product.id}>
-                      <ProductCard product={product} />
-                    </div>
-                  ))
-                ) : (
-                  <p className="text-center">No Kids products available.</p>
-                );
-              })()
-            )}
-          </div>
-        </section>
-      </div>
+      {/* Category Sections */}
+      {Object.keys(categoryRefs).map((category) => (
+        <div className={`filter ${category}`} key={category}>
+          <section
+            className="products-section "
+            ref={categoryRefs[category]}
+          >
+            <h2 className="section-title mb-2 text-center">
+              <i className="fas fa-tshirt text-warning"></i> {category}
+            </h2>
+            <div className="products-scroll-container">
+              {loading ? (
+                <p className="text-center">Loading products...</p>
+              ) : error ? (
+                <p className="text-center text-danger">{error}</p>
+              ) : (
+                renderProductsByCategory(category)
+              )}
+            </div>
+          </section>
+        </div>
+      ))}
 
       {/* About Us Section */}
       <section className="about-us-section mt-5">

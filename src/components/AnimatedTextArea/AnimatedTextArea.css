@@ -1,7 +1,4 @@
-body {
-  padding-top: 70px; /* Adjust this value based on your navbar height */
-  box-sizing: border-box;
-}
+
 .input-with-image {
   position: relative;
   display: flex;
@@ -30,4 +27,52 @@ body {
 .ai-search-btn-new .fa-search {
   font-size: 1.2em;
   color: #666;
+}
+
+.suggestions-list {
+  position: absolute;
+  width: 27%;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  list-style-type: none;
+  padding: 0;
+  margin: 5px 0 0;
+  z-index: 10;
+  max-height: 250px;
+  overflow-y: auto;
+}
+
+.suggestions-list li {
+  padding: 10px;
+  font-size: 14px;
+  color: #333;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.suggestions-list li:hover {
+  background-color: #f0f0f0;
+}
+
+
+@media (max-width: 768px) {
+ .suggestions-list {
+  position: absolute;
+  width: 85%;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  list-style-type: none;
+  padding: 0;
+  margin: 5px 0 0;
+  z-index: 10;
+  max-height: 250px;
+  overflow-y: auto;
+}
+
+ 
+  
 }
