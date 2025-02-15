@@ -266,9 +266,10 @@ const HomePage = () => {
           ) : products.length > 0 ? (
             products.map((product) => {
               return (
-                <div className="col-6 col-md-3" key={product.id}>
-                    <ProductCard product={product} />
-                </div>
+<div className="MobileSet col-12 col-md-3" key={product.id}>
+    <ProductCard product={product} />
+</div>
+
               );
             })
           ) : (

@@ -54,7 +54,7 @@ const ProductReviews = ({ reviews }) => {
 
       {/* Only show average rating in summary view */}
       {view === "summary" && (
-        <div className="review-summary" style={{ background: "white", borderRadius: "10px", marginTop: "10px" }}>
+        <div className="review-summary" style={{ background: "transparent", borderRadius: "10px", marginTop: "10px" }}>
       <div className="average-rating" style={{gap:"10px"}}>
             <span style={{ color: "black" }}>Average Rating :</span>
             <div className="average-rating-display" >

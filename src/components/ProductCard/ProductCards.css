@@ -42,6 +42,7 @@
   font-size: 14px;
   font-weight: bold;
   color: #1B1F3B;
+  margin-top: 11px;
   margin-bottom: 6px;
   text-align: center;
   white-space: nowrap;
@@ -171,8 +172,8 @@
 /* Mobile Responsive Design */
 @media (max-width: 768px) {
   .product-card {
-    max-width: 95%;
-    height: auto; /* Allow card height to adjust */
+    max-width: 90%;
+    height: 421px; /* Allow card height to adjust */
   }
 
   .card-title {
@@ -192,21 +193,9 @@
     font-size: 10px;
   }
 
-  .action-buttons .btn {
-    font-size: 11px;
-    padding: 6px;
-  }
+ 
 
-  .action-buttons {
-    flex-direction: column;
-    justify-content: center;
-    gap: 3px;
-  }
 
-  .action-buttons .btn {
-    width: 100%; /* Make buttons full width on mobile */
-    padding: 12px;
-  }
 }
 .btn btn-cart{
   background-color: #D7263D;
@@ -269,20 +258,6 @@
   .rating-stars {
     display: none;
   }
-
-  .product-card {
-    /* Adjust card layout for mobile */
-  }
-
-  .action-buttons {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .btn-cart, .btn-buy {
-    margin-bottom: 10px;
-    width: 100%;
-  }
 }
 
 @media (min-width: 768px) {
@@ -293,5 +268,20 @@
 
   .rating-points {
     display: none;
+  }
+}
+
+/* CSS Update (ProductCards.css) */
+@media (max-width: 768px) {
+  .action-buttons {
+    display: flex;
+    justify-content: space-between;
+    padding: 4px 8px;
+    gap: 8px;
+  }
+  .btn-cart, .btn-buy {
+    flex: 1;
+    font-size: 12px;
+    padding: 6px;
   }
 }

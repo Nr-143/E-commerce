@@ -248,7 +248,7 @@ const ProductDetailsPage = () => {
   return (
     <div className="product-details-container">
       <div className="product-layout">
-        {/* Image Section */}
+        {/* Image Section */} 
         <div className="image-section">
           <Slider {...sliderSettings} className="image-carousel">
             {productData.image.map((imgSrc, index) => (
@@ -264,6 +264,7 @@ const ProductDetailsPage = () => {
               {currentImageIndex + 1} / {productData.image.length}
             </span>
           </div>
+          
           <div className="user-details">
             <h3>Delivery Address</h3>
             <div className="user-info">
@@ -389,6 +390,23 @@ const ProductDetailsPage = () => {
         </div>
       </div>
 
+          <div className="user-detailsMobileView">
+            <h3>Delivery Address</h3>
+            <div className="user-info">
+              <span className="username">{user.name}</span>
+              <span className="status">
+                <span className="status-dot"></span> {user.status}
+              </span>
+            </div>
+            <div className="contact-info">
+              <span>{user.email}</span> | <span>{user.phone}</span>
+            </div>
+            <div className="address-info">{user.address}</div>
+            <div className="delivery-days">
+              🚚 Estimated Delivery:{" "}
+              <strong style={{ color: "green" }}>{user.deliverableDays}</strong>
+            </div>
+          </div>
       {/* Related Products */}
       <div className="related-products">
         {/* <h3>Related Products</h3> */}

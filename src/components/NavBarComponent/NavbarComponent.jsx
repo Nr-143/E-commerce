@@ -15,15 +15,22 @@ const NavbarComponent = ({ cartItems = [] }) => {
   return (
     <>
       {/* Desktop Navbar */}
-      <Navbar bg="dark" variant="dark" expand="lg" className="py-2 shadow-sm">
+      <Navbar bg="dark" variant="dark" expand="lg" className="py-2 shadow-sm" >
         <Container className="d-flex flex-column flex-lg-row align-items-center justify-content-between">
           {/* Logo */}
-          <Navbar.Brand as={Link} to="/" className="text-white fw-bold fs-5">
-            🛍 DailyMart
-          </Navbar.Brand>
+        <div className="me-auto">
+      <Navbar.Brand 
+        as={Link} 
+        to="/" 
+        className="text-white fw-bold fs-5  " 
+        style={{ paddingLeft: "10px" }}
+      >
+        🛍 DailyMart
+      </Navbar.Brand>
+    </div>
 
           {/* Search Bar for Desktop */}
-          <div className="d-none d-lg-block flex-grow-1 mx-3">
+          <div className="d-none d-lg-block flex-grow-1 mx-7">
             <AnimatedTextArea
               value={searchQuery}
               setQuery={setSearchQuery}
@@ -34,7 +41,7 @@ const NavbarComponent = ({ cartItems = [] }) => {
           {/* Navigation Links */}
           <Nav className="d-none d-lg-flex align-items-center">
             <Nav.Link as={Link} to="/" className="text-white mx-2">
-              <FaHome size={20} color="#FF6B35" /> Home
+              <FaHome size={15} color="#FF6B35" /> Home
             </Nav.Link>
             <Nav.Link as={Link} to="/cart" className="text-white position-relative mx-2">
               <FaShoppingCart size={20} color="#FF6B35" />
@@ -45,14 +52,17 @@ const NavbarComponent = ({ cartItems = [] }) => {
               )}
             </Nav.Link>
             <Nav.Link as={Link} to="/orders" className="text-white mx-2">
-              <FaBoxOpen size={20} color="#6A0DAD" /> Orders
+              <FaBoxOpen size={15} color="#6A0DAD" /> Orders
             </Nav.Link>
 
             <Nav.Link as={Link} to="/wishlist" className="text-white mx-2">
-              <FaHeart size={20} color="#E0BBE4" /> Wishlist
+              <FaHeart size={15} color="#E0BBE4" /> Wishlist
+            </Nav.Link>
+                        <Nav.Link as={Link} to="/wishlist" className="text-white mx-2">
+              <FaHeart size={15} color="#E0BBE4" /> Became a Seller
             </Nav.Link>
             <Nav.Link as={Link} to="/login" className="text-white mx-2">
-              <FaSignInAlt size={20} color="#F9F9F9" /> Login
+              <FaSignInAlt size={15} color="#F9F9F9" /> Login
             </Nav.Link>
           </Nav>
         </Container>

@@ -5,11 +5,11 @@
 } */
 .product-specification1 {
   background-color: #f1f1f1;
-  padding: 20px;
+  padding: 1px;
   border-radius: 12px;
   box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
   max-width: 100%;
-  margin: 20px auto;
+  margin: 2px auto;
   font-family: "Arial", sans-serif;
   min-height: 400px;
   max-height: 450px;

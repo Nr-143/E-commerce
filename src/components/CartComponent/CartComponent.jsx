@@ -19,9 +19,19 @@ const CartComponent = ({ cartItems, removeItem, updateQuantity }) => {
             cartItems.map((item, index) => (
               <ListGroup.Item key={index} className="cart-item">
                 <Row className="align-items-center">
-                  <Col xs={4} md={2} className="d-flex justify-content-center">
-                    {/* <img src={defaultImage} alt={item.name} className="cart-item-image" /> */}
-                  </Col>
+<Col xs={4} md={3} className="d-flex justify-content-center">
+  <img 
+    src={defaultImage} 
+    alt={item.name} 
+    className="cart-item-image" 
+    style={{ 
+      width: "100%", 
+      maxWidth: "150px", 
+      height: "auto", 
+      objectFit: "cover" 
+    }}
+  />
+</Col>
                   <Col xs={8} md={6}>
                     <div className="cart-item-details">
                       <h6>{item.name}</h6>

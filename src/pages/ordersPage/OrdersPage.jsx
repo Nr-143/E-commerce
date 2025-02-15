@@ -27,7 +27,7 @@ const OrdersPage = () => {
       product: "Organic Bananas (1 Dozen)",
       date: "2025-02-09",
       status: "Delivered",
-      image: "https://via.placeholder.com/60",
+      image:defaultImage,
       totalPrice: 4.49,
       updates: [
         { status: "Order Placed", date: "2025-02-07" },

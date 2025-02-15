@@ -11,7 +11,6 @@ const ProductSellerDetails = ({ seller }) => {
 
   return (
     <div className="seller-card">
-      <h3 className="seller-heading">Seller Details</h3>
       <div className="seller-info">
         <p>
           <FaStore className="icon" aria-label="Store Icon" />{" "}

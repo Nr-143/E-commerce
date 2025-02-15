@@ -35,7 +35,7 @@
     width: 100%;
     background-color: #1B1F3B; /* Matches primary color */
     box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.2);
-    padding: 10px 0;
+    padding: 5px 0;
     z-index: 1000;
   }
 

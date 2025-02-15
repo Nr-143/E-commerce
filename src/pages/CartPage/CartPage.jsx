@@ -86,7 +86,6 @@ const CartPage = () => {
 
   return (
     <div className="cart-page">
-      <h1 className="text-center mt-4">Your Shopping Cart</h1>
       <CartComponent
         cartItems={cartItems}
         removeItem={removeItem}
