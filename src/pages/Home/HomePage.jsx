@@ -57,7 +57,9 @@ const HomePage = () => {
             "size": ["S", "M", "L", "XL"],
             "isInCart": false,
             "offerEndTime": "2025-03-12T23:59:59Z",
-            "category": "clothing"
+            "category": "clothing",
+            deliveryFee: 30,
+
           },
           {
             "id": 101,
@@ -72,7 +74,9 @@ const HomePage = () => {
             "size": ["S", "M", "L", "XL"],
             "isInCart": false,
             "offerEndTime": "2025-03-12T23:59:59Z",
-            "category": "clothing"
+            "category": "clothing",
+            deliveryFee: 30,
+
           },
           {
             id: 201,
@@ -112,6 +116,8 @@ const HomePage = () => {
             size: ["30", "32", "34", "36"],
             isInCart: false,
             category: "clothing",
+            deliveryFee: 30,
+
           },
           {
             id: 202,
@@ -163,6 +169,8 @@ const HomePage = () => {
             warranty: "6 Months",
             isInCart: false,
             category: "kids",
+            deliveryFee: 30,
+
           },
           {
             id: 4,
@@ -175,6 +183,7 @@ const HomePage = () => {
             ratings: 4.4,
             isInCart: false,
             category: "books",
+            deliveryFee: 30,
           },
           {
             id: 104,

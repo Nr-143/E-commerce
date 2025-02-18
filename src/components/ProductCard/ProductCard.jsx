@@ -1,11 +1,23 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { FaHeart } from "react-icons/fa";
 import defaultImage from "../../assets/icons/06.jpg";
 import "../ProductCard/ProductCards.css";
 
-const ProductCard = ({ product, addToCart }) => {
+const ProductCard = ({ product, addToCart, addToWishlist, wishlist }) => {
   const [timeLeft, setTimeLeft] = useState("");
   const productImageRef = useRef(null);
+  const [isWishlisted, setIsWishlisted] = useState(false);
+
+  useEffect(() => {
+    const isInWishlist = wishlist ? wishlist.some(item => item.id === product.id) : false;
+  }, [wishlist, product.id]);
+
+  const handleWishlist = (e) => {
+    e.stopPropagation();
+    addToWishlist(product);
+    setIsWishlisted(!isWishlisted);
+  };
 
   useEffect(() => {
     if (product.offerEndTime) {
@@ -28,6 +40,15 @@ const ProductCard = ({ product, addToCart }) => {
 
   return (
     <div className="product-card">
+      <div className="wishlist-icon" onClick={handleWishlist}>
+        <FaHeart
+          size={22}
+          style={{
+            color: isWishlisted ? "#FF6B35" : "#ccc",
+            transition: "color 0.3s",
+          }}
+        />
+      </div>
       <Link to={`/product/${product.id}`} className="product-link">
         {product.discount > 0 && <span className="discount-badge">{product.discount}% OFF</span>}
         {timeLeft && <span className="timer-badge">{timeLeft}</span>}
@@ -40,7 +61,8 @@ const ProductCard = ({ product, addToCart }) => {
             <p className="selling-price">₹{product.price}</p>
           </div>
           <div className="delivery-info">
-            <p>{product.deliveryFee > 0 ? `Delivery: ₹${product.deliveryFee}` : "Free Delivery"}</p>
+            <p className="deliveryFee"><strong>Delivery:</strong> <span  style={{color:"green", fontWeight:"lighter"}}>{product.deliveryFee > 0 ? `₹${product.deliveryFee}` : "Free"} | {product.deliveryDays ? `${product.deliveryDays} days` : "Varies"} </span></p>
+            <p className="seller-name"><strong>Seller:</strong><span style={{ color: "green", fontWeight: "lighter" }}>{product.sellerName || "Authorized Seller"} </span> </p>
           </div>
           <div className="rating-sold">
             <div className="rating-points">{product.ratings || 0} / 5</div>
@@ -58,4 +80,3 @@ const ProductCard = ({ product, addToCart }) => {
 };
 
 export default ProductCard;
-

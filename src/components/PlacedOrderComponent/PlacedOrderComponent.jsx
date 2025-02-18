@@ -3,10 +3,14 @@ import { useNavigate } from "react-router-dom";
 import "../PlacedOrderComponent/PlacedOrderComponent.css";
 
 const PlacedOrders = ({ orders }) => {
-  const navigate = useNavigate(); // Hook for navigation
+  const navigate = useNavigate();
 
   const handleTrackOrder = (order) => {
-    navigate("/TrackOrder", { state: { order } }); // Redirect with order details
+    navigate("/TrackOrder", { state: { order } });
+  };
+
+  const handleCustomerService = () => {
+    alert("Contact Customer Care: 1800-123-456 | support@dailymart.com");
   };
 
   return (
@@ -21,27 +25,22 @@ const PlacedOrders = ({ orders }) => {
                 <img src={order.image} alt={order.product} className="order-image" />
                 <div className="order-info">
                   <p className="order-productName"><strong>{order.product}</strong></p>
-                  <p className="order-productId"><span style={{ color: "red",fontWeight:"bold" }}>Order ID: </span>{order.id}</p>
-                  <p className="order-date"> <span style={{ color: "red", fontWeight: "bold" }}>Ordered on: </span>{order.date}</p>
-                  <p className="order-delivery-date">📦 Delivery by: <strong>{order.deliveryDate}</strong></p>
+                  <p className="order-productId">Order ID: {order.id}</p>
+                  <p className="order-date">Ordered on: {order.date}</p>
+                  <p className="order-delivery-date">📦 Delivery by: {order.deliveryDate}</p>
                   <p className="order-address">📍 {order.address}</p>
                 </div>
               </div>
               <div className="order-status">
-                <p>
-                  Status:
-                  <span
-                    className={`status-${order.status.replace(/\s+/g, '').toLowerCase()}`}
-                  >
-                    {order.status}
-                  </span>
-                </p>
+                <p>Status: <span className={`status-${order.status.toLowerCase()}`}>{order.status}</span></p>
               </div>
-
-
+              <div className="order-actions">
+                <button className="track-order-btn" onClick={() => handleTrackOrder(order)}>Track</button>
+                <button className="cancel-order-btn">Cancel</button>
+                <button className="help-btn" onClick={handleCustomerService}>Help</button>
+              </div>
               <div className="order-footer">
                 <p className="order-price">Total: ${order.totalPrice}</p>
-                <button className="track-order-btn" onClick={() => handleTrackOrder(order)}>Track Order</button>
               </div>
             </div>
           ))}
