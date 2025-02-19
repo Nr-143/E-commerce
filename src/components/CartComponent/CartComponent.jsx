@@ -1,7 +1,9 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import defaultImage from '../../assets/icons/06.jpg';
 import { Card, Button, ListGroup, Row, Col } from 'react-bootstrap';
 import { FaTrashAlt } from 'react-icons/fa';
+import "../CartComponent/CartComponent.css"
 
 const CartComponent = ({ cartItems, removeItem, updateQuantity }) => {
   const calculateTotal = () => {
@@ -19,30 +21,42 @@ const CartComponent = ({ cartItems, removeItem, updateQuantity }) => {
             cartItems.map((item, index) => (
               <ListGroup.Item key={index} className="cart-item">
                 <Row className="align-items-center">
-<Col xs={4} md={3} className="d-flex justify-content-center">
-  <img 
-    src={defaultImage} 
-    alt={item.name} 
-    className="cart-item-image" 
-    style={{ 
-      width: "100%", 
-      maxWidth: "150px", 
-      height: "auto", 
-      objectFit: "cover" 
-    }}
-  />
-</Col>
-                  <Col xs={8} md={6}>
-                    <div className="cart-item-details">
-                      <h6>{item.name}</h6>
-                      <p><strong>Current Offer:</strong> <span style={{ color: "orange" }}>{item.currentOffer}</span></p>
-                      <p><strong>Discounted Price:</strong> <span style={{ color: "red" }}>₹{item.discountPrice}</span></p>
-                      <p><strong>Selling Price:</strong> <span style={{ color: "green" }}>₹{item.price}</span></p>
-                      <p><strong>Offer Expiry:</strong> <span style={{ color: "grey" }}>{item.offerExpiry}</span></p>
-                    </div>
+
+                  {/* Image Section */}
+                  <Col xs={4} md={3} className="d-flex justify-content-center">
+                    <Link to={`/product/${item.id}`} className="product-link">
+                      <img
+                        src={defaultImage}
+                        alt={item.name}
+                        className="cart-item-image"
+                        style={{
+                          width: "100%",
+                          maxWidth: "120px",
+                          height: "auto",
+                          objectFit: "cover",
+                          borderRadius: "8px"
+                        }}
+                      />
+                    </Link>
                   </Col>
 
-                  <Col xs={12} md={2} className="d-flex justify-content-end cart-item-controls">
+                  {/* Product Details */}
+                  <Col xs={8} md={5} className="text-start">
+                    <Link to={`/product/${item.id}`} className="product-link">
+
+                      <div className="cart-item-details">
+                        <h6 className="mb-1">{item.name}</h6>
+                        <p className="mb-1"><strong>Current Offer:</strong> <span style={{ color: "orange" }}>{item.currentOffer}</span></p>
+                        <p className="mb-1"><strong>Discounted Price:</strong> <span style={{ color: "red" }}>₹{item.discountPrice}</span></p>
+                        <p className="mb-1"><strong>Selling Price:</strong> <span style={{ color: "green" }}>₹{item.price}</span></p>
+                        <p className="mb-0"><strong>Offer Expiry:</strong> <span style={{ color: "grey" }}>{item.offerExpiry}</span></p>
+                      </div>
+                    </Link>
+
+                  </Col>
+
+                  {/* Quantity & Actions */}
+                  <Col xs={12} md={4} className="d-flex justify-content-end align-items-center">
                     <Button
                       variant="outline-secondary"
                       onClick={() => updateQuantity(item.id, item.quantity - 1)}
@@ -51,14 +65,11 @@ const CartComponent = ({ cartItems, removeItem, updateQuantity }) => {
                     >
                       -
                     </Button>
-                    <span className="quantity-display" style={{ padding: '0 10px', marginTop: "7px" }}>
-                      {item.quantity}
-                    </span>
-
+                    <span className="quantity-display mx-2">{item.quantity}</span>
                     <Button
                       variant="outline-secondary"
                       onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                      className="quantity-btn ms-2"
+                      className="quantity-btn"
                     >
                       +
                     </Button>
@@ -72,17 +83,9 @@ const CartComponent = ({ cartItems, removeItem, updateQuantity }) => {
                   </Col>
                 </Row>
 
-                {/* <Row className="mt-2 justify-content-center">
-                  <Col xs={12} md={6} className="text-center">
-                    <p><strong>Delivery By:</strong> <span style={{ color: "blue" }}>{item.deliveryDate}</span></p>
-                  </Col>
-                  <Col xs={12} md={6} className="text-center">
-                    <p><strong>Stocks Left:</strong> <span style={{ color: "brown" }}>{item.stockLeft}</span></p>
-                  </Col>
-                </Row> */}
-
-                <div className="d-flex justify-content-center mt-3">
-                  <h6>Total: ₹{item.discountPrice * item.quantity}</h6>
+                {/* Item Total */}
+                <div className="text-center mt-3">
+                  <h6 className="fw-bold">Total: ₹{item.discountPrice * item.quantity}</h6>
                 </div>
               </ListGroup.Item>
             ))
@@ -93,9 +96,10 @@ const CartComponent = ({ cartItems, removeItem, updateQuantity }) => {
           )}
         </ListGroup>
 
+        {/* Footer with Total and Checkout Button */}
         {cartItems.length > 0 && (
-          <Card.Footer className="d-flex justify-content-end sticky-footer">
-            <h5 className="me-5">Total: ₹{calculateTotal()}</h5>
+          <Card.Footer className="d-flex justify-content-between align-items-center sticky-footer">
+            <h5 className="mb-0">Total: ₹{calculateTotal()}</h5>
             <Button variant="success" className="checkout-btn">Proceed to Checkout</Button>
           </Card.Footer>
         )}

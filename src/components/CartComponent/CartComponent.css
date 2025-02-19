@@ -144,3 +144,6 @@ body {
   /* Use !important to ensure the styles are applied */
   width: 100% !important;
 }
+.mb-1{
+  color: black;
+}

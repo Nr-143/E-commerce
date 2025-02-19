@@ -1,5 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+
 import "../PlacedOrderComponent/PlacedOrderComponent.css";
 
 const PlacedOrders = ({ orders }) => {
@@ -15,6 +17,7 @@ const PlacedOrders = ({ orders }) => {
 
   return (
     <div className="placed-orders-container">
+      <h2>Your Orders</h2>
       {orders.length === 0 ? (
         <p className="no-orders">You have no placed orders.</p>
       ) : (
@@ -22,14 +25,18 @@ const PlacedOrders = ({ orders }) => {
           {orders.map((order) => (
             <div key={order.id} className="order-card">
               <div className="order-header">
-                <img src={order.image} alt={order.product} className="order-image" />
-                <div className="order-info">
-                  <p className="order-productName"><strong>{order.product}</strong></p>
-                  <p className="order-productId">Order ID: {order.id}</p>
-                  <p className="order-date">Ordered on: {order.date}</p>
-                  <p className="order-delivery-date">📦 Delivery by: {order.deliveryDate}</p>
-                  <p className="order-address">📍 {order.address}</p>
-                </div>
+                <Link to={`/product/${order.id}`} className="product-link">
+
+                  <img src={order.image} alt={order.product} className="order-image" />
+                  <div className="order-info">
+                    <p className="order-productName"><strong>{order.product}</strong></p>
+                    <p className="order-productId">Order ID: {order.id}</p>
+                    <p className="order-date">Ordered on: {order.date}</p>
+                    <p className="order-delivery-date">📦 Delivery by: {order.deliveryDate}</p>
+                    <p className="order-address">📍 {order.address}</p>
+                  </div>
+                </Link>
+
               </div>
               <div className="order-status">
                 <p>Status: <span className={`status-${order.status.toLowerCase()}`}>{order.status}</span></p>

@@ -115,7 +115,7 @@ body {
   display: flex;
   justify-content: space-between;
   gap: 6px;
-  margin-top: 1px;
+  margin-top: -8px;
 }
 
 .action-buttons .btn {
@@ -209,9 +209,7 @@ body {
 .btn btn-cart{
   background-color: #D7263D;
 }
-.product-card{
-  /* text-decoration: none; */
-}
+
 
 .delivery-info {
   font-size: 13px;
