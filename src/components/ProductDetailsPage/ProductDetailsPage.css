@@ -609,4 +609,24 @@ body {
 
 
 
+.related-products-container {
+  overflow-x: auto;
+  white-space: nowrap;
+  padding: 10px;
+  scrollbar-width: none; /* Hides scrollbar for Firefox */
+  -ms-overflow-style: none; /* Hides scrollbar for IE and Edge */
+}
 
+.related-products-container::-webkit-scrollbar {
+  display: none; /* Hides scrollbar for Chrome, Safari, and Edge */
+}
+
+.related-products-scroll {
+  display: flex;
+  gap: 10px; /* Space between items */
+}
+
+.related-product-card {
+  flex: 0 0 auto;
+  width: 310px; /* Adjust as needed */
+}

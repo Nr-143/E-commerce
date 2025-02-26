@@ -8,6 +8,8 @@ import CartPage from "./pages/CartPage/CartPage.jsx";
 import NavbarComponent from "./components/NavBarComponent/NavbarComponent.jsx";
 import TermsModal from "./components/TermsModal/TermsModal.jsx";
 import SearchResults from "./pages/SearchResultPage/SearchResult.jsx";
+import Wishlist from "./pages/Wishlist/Wishlist.jsx";
+
 
 function App() {
   const [isModalOpen, setModalOpen] = useState(false);
@@ -31,6 +33,7 @@ function App() {
         <Route path="/cart" element={<CartPage />} />
         <Route path="/orders" element={<OrdersPage />} />
         <Route path="/TrackOrder" element={<TrackOrder />} />
+        <Route path="/wishlist" element={<Wishlist />} />
 
       </Routes>
 

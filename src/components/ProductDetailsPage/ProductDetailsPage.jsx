@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import { Link } from "react-router-dom";
-import Loader from "../Loader/Loader"; 
+import Loader from "../Loader/Loader";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import defaultImage from "../../assets/icons/06.jpg";
@@ -35,11 +35,11 @@ const ProductDetailsPage = () => {
     const fetchProductDetails = async () => {
       setLoading(true);
       setProduct(null);
- const response = await fetch(
-   `https://world.openfoodfacts.org/api/v0/product/${3017620422003}.json`
- );
+      const response = await fetch(
+        `https://world.openfoodfacts.org/api/v0/product/${3017620422003}.json`
+      );
       const data = await response.json();
-   console.log("data",data)
+      console.log("data", data)
       try {
         const productData = {
           id: 101,
@@ -248,7 +248,7 @@ const ProductDetailsPage = () => {
   return (
     <div className="product-details-container">
       <div className="product-layout">
-        {/* Image Section */} 
+        {/* Image Section */}
         <div className="image-section">
           <Slider {...sliderSettings} className="image-carousel">
             {productData.image.map((imgSrc, index) => (
@@ -264,7 +264,7 @@ const ProductDetailsPage = () => {
               {currentImageIndex + 1} / {productData.image.length}
             </span>
           </div>
-          
+
           <div className="image-counter-and-buttons">
             <div className="buy-add-buttons">
               <button className="buy-now-button">Buy Now</button>
@@ -291,17 +291,17 @@ const ProductDetailsPage = () => {
           </div>
 
           {/* Total Images and Buy/Add to Cart Buttons */}
-   
+
         </div>
 
         {/* Product Info Section */}
         <div className="details-section">
           {/* Offer badge and end time at top right */}
-{productData.offerPercent > 0 && (
-    <span className="offer-end-time">
-      Ends in: {countdown}
-    </span>
-)}
+          {productData.offerPercent > 0 && (
+            <span className="offer-end-time">
+              Ends in: {countdown}
+            </span>
+          )}
 
 
           <div className="product-info">
@@ -392,39 +392,59 @@ const ProductDetailsPage = () => {
         </div>
       </div>
 
-          <div className="user-detailsMobileView">
-            <h3>Delivery Address</h3>
-            <div className="user-info">
-              <span className="username">{user.name}</span>
-              <span className="status">
-                <span className="status-dot"></span> {user.status}
-              </span>
-            </div>
-            <div className="contact-info">
-              <span>{user.email}</span> | <span>{user.phone}</span>
-            </div>
-            <div className="address-info">{user.address}</div>
-            <div className="delivery-days">
-              🚚 Estimated Delivery:{" "}
-              <strong style={{ color: "green" }}>{user.deliverableDays}</strong>
-            </div>
-          </div>
+      <div className="user-detailsMobileView">
+        <h3>Delivery Address</h3>
+        <div className="user-info">
+          <span className="username">{user.name}</span>
+          <span className="status">
+            <span className="status-dot"></span> {user.status}
+          </span>
+        </div>
+        <div className="contact-info">
+          <span>{user.email}</span> | <span>{user.phone}</span>
+        </div>
+        <div className="address-info">{user.address}</div>
+        <div className="delivery-days">
+          🚚 Estimated Delivery:{" "}
+          <strong style={{ color: "green" }}>{user.deliverableDays}</strong>
+        </div>
+      </div>
       {/* Related Products */}
       <div className="related-products">
         {/* <h3>Related Products</h3> */}
+        <h4>Related Products</h4>
 
-        <div className="row">
-          {relatedProducts.map((relatedProduct) => (
-            <div
-              className="col-4"
-              key={relatedProduct.id}
-              onClick={() => navigate(`/product/${relatedProduct.id}`)} // Use navigate instead of Link
-              style={{ cursor: "pointer" }}
-            >
-              <ProductCard product={relatedProduct} />
-            </div>
-          ))}
+        <div className="related-products-container">
+          <div className="related-products-scroll">
+            {relatedProducts.map((relatedProduct) => (
+              <div
+                className="related-product-card"
+                key={relatedProduct.id}
+                onClick={() => navigate(`/product/${relatedProduct.id}`)}
+                style={{ cursor: "pointer" }}
+              >
+                <ProductCard product={relatedProduct} />
+              </div>
+            ))}
+          </div>
         </div>
+        <h4>Products You also Like</h4>
+
+        <div className="related-products-container">
+          <div className="related-products-scroll">
+            {relatedProducts.map((relatedProduct) => (
+              <div
+                className="related-product-card"
+                key={relatedProduct.id}
+                onClick={() => navigate(`/product/${relatedProduct.id}`)}
+                style={{ cursor: "pointer" }}
+              >
+                <ProductCard product={relatedProduct} />
+              </div>
+            ))}
+          </div>
+        </div>
+
       </div>
     </div>
   );

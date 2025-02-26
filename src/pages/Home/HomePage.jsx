@@ -36,6 +36,7 @@ const HomePage = () => {
             name: "Organic Apples",
             brand: "Fresh Farm",
             image: "https://via.placeholder.com/150",
+            description: "The company reported a 5% growth in revenue for FY24, reaching ₹2,405 crore. Operating revenue stood at ₹2.39 lakh crore, up from ₹2.26 lakh crore in FY23. Although EBITDA improved to -₹9,344.29 crore, it still indicates challenges in achieving profitability compared to the previous year's -₹17,774.35 crore.",
             oldPrice: 150,
             price: 120,
             discount: 20,
@@ -305,7 +306,7 @@ const HomePage = () => {
     if (filteredProducts.length === 0) {
       return <p className="text-center">No {category} products available.</p>;
     }
-
+    console.log("filteredProducts", filteredProducts)
     return filteredProducts.map((product) => (
       <div className="product-card-wrapper" key={product.id}>
         <ProductCard product={product} />
