@@ -102,6 +102,7 @@ const ProductCard = ({ product, addToCart, addToWishlist, wishlist }) => {
       <div className="action-buttons">
         <button
           className="btn btn-cart"
+          style={{ backgroundColor: "#6A0DAD", color: "white" }}
           onClick={(e) => {
             e.stopPropagation();
             addToCart(product);
@@ -109,7 +110,10 @@ const ProductCard = ({ product, addToCart, addToWishlist, wishlist }) => {
         >
           <FaShoppingCart className="btn-icon" /> Add to Cart
         </button>
-        <button className="btn btn-buy">
+        <button className="btn btn-buy"
+          style={{ backgroundColor: "#FF6B35", color: "white" }}
+
+        >
           <FaBolt className="btn-icon" /> Buy Now
         </button>
       </div>

@@ -329,7 +329,7 @@ div a {
 
 /* Category Card Active State */
 .category-card.active {
-  border: 2px solid #ff6b35; /* Highlight border */
+  border: 2px solid #ffffff; /* Highlight border */
   background-color: #ff6b35; /* Highlight background */
   color: white; /* Highlight text color */
 }
@@ -347,4 +347,38 @@ div a {
   to {
     transform: translateX(-100%);
   }
+}
+.categories-section {
+  position: sticky;
+  top: 67px; /* Adjust based on your navbar height */
+  z-index: 1000;
+  background: #1B1F3B; /* Use your theme color */
+  /* padding: 10px 0; */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* .categories-scroll-container {
+  display: flex;
+  overflow-x: auto;
+  gap: 10px;
+  padding: 10px;
+  white-space: nowrap;
+  justify-content: center;
+} */
+
+/* .category-card {
+  padding: 10px 15px;
+  background: #6A0DAD;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+} */
+
+.category-card.active{
+  background: #ff5411;
+  transform: scale(1.1);
+}
+.category-card:hover {
+  /* background: #2f00b1; */
+  transform: scale(1.1);
 }

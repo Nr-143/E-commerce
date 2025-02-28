@@ -2,7 +2,10 @@ import "./HomePage.css";
 import React, { useEffect, useState, useRef } from "react";
 import { fetchProducts } from "../../api/api";
 import TermsModal from "../../components/TermsModal/TermsModal.jsx";
+import NewArrivals from "../../components/NewArrivals/NewArrivals.jsx";
 import ProductCard from "../../components/ProductCard/ProductCard.jsx";
+import HeroSection from "../../components/HeroSection/HeroSection.jsx";
+
 import { Link } from "react-router-dom";
 
 const HomePage = () => {
@@ -10,6 +13,7 @@ const HomePage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [isModalOpen, setModalOpen] = useState(false);
+  const [newArrivals, setNewArrivals] = useState([]);
   const [activeCategory, setActiveCategory] = useState(null);
 
   // Create refs for each category section
@@ -25,7 +29,7 @@ const HomePage = () => {
     Kids: useRef(null),
     Service: useRef(null),
   };
-
+  const arrivals = products;
   useEffect(() => {
     const fetchProductsData = async () => {
       try {
@@ -317,11 +321,9 @@ const HomePage = () => {
   return (
     <div className="homepage-container">
       {/* Categories Section */}
-
-
       <section
         className="categories-section mt-5"
-        style={{ border: "1px solid tomato " }}
+        style={{ border: "1px solid white" }}
       >
         <div className="categories-scroll-container">
           {[
@@ -346,6 +348,10 @@ const HomePage = () => {
           ))}
         </div>
       </section>
+      <HeroSection />
+
+      <NewArrivals products={newArrivals} />
+      {/* Other Sections like Categories, New Arrivals, etc. */}
 
       {/* Category Sections */}
       {Object.keys(categoryRefs).map((category) => (

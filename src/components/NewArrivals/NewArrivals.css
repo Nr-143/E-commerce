@@ -1,0 +1,89 @@
+/* components/NewArrivals/NewArrivals.css */
+.new-arrivals-section {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    margin: 20px 0;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #6a0dad;
+    margin-bottom: 15px;
+}
+
+.new-arrivals-container {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 15px;
+    padding: 10px;
+}
+
+.arrival-card {
+    flex: 0 0 auto;
+    width: 160px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.arrival-card:hover {
+    transform: scale(1.05);
+}
+
+.arrival-image {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.arrival-details {
+    margin-top: 10px;
+}
+
+.arrival-name {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #3a3a3a;
+}
+
+.arrival-price {
+    font-size: 0.85rem;
+    color: #ff6b35;
+    font-weight: bold;
+}
+
+.new-arrivals-container::-webkit-scrollbar {
+    height: 5px;
+}
+
+.new-arrivals-container::-webkit-scrollbar-thumb {
+    background: #6a0dad;
+    border-radius: 10px;
+}
+
+.loading-text {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #ff6b35;
+}
+
+.error-text {
+    text-align: center;
+    color: red;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.no-products-text {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #3a3a3a;
+}
