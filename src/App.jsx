@@ -9,6 +9,8 @@ import NavbarComponent from "./components/NavBarComponent/NavbarComponent.jsx";
 import TermsModal from "./components/TermsModal/TermsModal.jsx";
 import SearchResults from "./pages/SearchResultPage/SearchResult.jsx";
 import Wishlist from "./pages/Wishlist/Wishlist.jsx";
+import CategoryPage from "./pages/Home/CategoryPage.jsx";  // Import this
+
 
 
 function App() {
@@ -34,6 +36,8 @@ function App() {
         <Route path="/orders" element={<OrdersPage />} />
         <Route path="/TrackOrder" element={<TrackOrder />} />
         <Route path="/wishlist" element={<Wishlist />} />
+        <Route path="/category/:categoryId" element={<CategoryPage />} />  {/* ✅ FIXED ROUTE */}
+
 
       </Routes>
 

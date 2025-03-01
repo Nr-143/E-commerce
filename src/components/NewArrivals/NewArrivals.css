@@ -1,17 +1,9 @@
-/* components/NewArrivals/NewArrivals.css */
 .new-arrivals-section {
-    padding: 20px;
     background-color: #f9f9f9;
     border-radius: 10px;
     margin: 20px 0;
-}
-
-.section-title {
-    text-align: center;
-    font-size: 1.8rem;
-    font-weight: bold;
-    color: #6a0dad;
-    margin-bottom: 15px;
+    padding: 20px;
+    position: relative;
 }
 
 .new-arrivals-container {
@@ -20,6 +12,18 @@
     overflow-x: auto;
     gap: 15px;
     padding: 10px;
+    scroll-behavior: smooth;
+    position: relative;
+}
+
+/* Hide scrollbar */
+.new-arrivals-container::-webkit-scrollbar {
+    height: 5px;
+}
+
+.new-arrivals-container::-webkit-scrollbar-thumb {
+    background: #6a0dad;
+    border-radius: 10px;
 }
 
 .arrival-card {
@@ -30,12 +34,22 @@
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     padding: 10px;
     text-align: center;
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out, z-index 0.3s;
+    position: relative;
+    z-index: 1; /* Default z-index */
 }
 
+/* When hovered, bring to front */
 .arrival-card:hover {
     transform: scale(1.05);
+    z-index: 10;
 }
+
+/* Centered product should have the highest z-index
+.arrival-card.active {
+    z-index: 20;
+    transform: scale(1.1);
+} */
 
 .arrival-image {
     width: 100%;
@@ -60,30 +74,51 @@
     font-weight: bold;
 }
 
-.new-arrivals-container::-webkit-scrollbar {
-    height: 5px;
-}
-
-.new-arrivals-container::-webkit-scrollbar-thumb {
-    background: #6a0dad;
-    border-radius: 10px;
-}
-
-.loading-text {
-    text-align: center;
-    font-size: 1.2rem;
-    color: #ff6b35;
-}
-
-.error-text {
-    text-align: center;
-    color: red;
-    font-size: 1.2rem;
-    font-weight: bold;
-}
-
+.loading-text,
+.error-text,
 .no-products-text {
     text-align: center;
-    font-size: 1.1rem;
-    color: #3a3a3a;
+    font-size: 1.2rem;
+}
+.new-arrivals-container {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;  /* Enables horizontal scroll */
+    overflow-y: hidden; /* Hides vertical scroll */
+    gap: 15px;
+    padding: 10px;
+    scroll-behavior: smooth;
+    position: relative;
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
+    -ms-overflow-style: none; /* Hide scrollbar for IE/Edge */
+}
+
+/* Hide scrollbar for Webkit browsers (Chrome, Safari) */
+.new-arrivals-container::-webkit-scrollbar {
+    display: none;
+}
+
+.arrival-card {
+    flex: 0 0 auto;
+    width: 160px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    text-align: center;
+    transition: transform 0.3s ease-in-out, z-index 0.3s;
+    position: relative;
+    z-index: 1;
+}
+
+/* Highlight center product */
+.arrival-card.active {
+    z-index: 20;
+    transform: scale(1.1);
+}
+
+/* Allow very slight vertical movement */
+.new-arrivals-container:active {
+    overflow-y: auto; /* Enable minute vertical scrolling when scrolling horizontally */
+    max-height: 250px; /* Limit the height to prevent excessive movement */
 }

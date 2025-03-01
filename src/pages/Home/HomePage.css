@@ -382,3 +382,46 @@ div a {
   /* background: #2f00b1; */
   transform: scale(1.1);
 }
+.view-more-btn {
+  background-color: #ff6b35; /* Matches your theme color */
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.view-more-btn:hover {
+  background-color: #d95b2e; /* Darker shade for hover */
+  transform: scale(1.05);
+}
+
+.view-more-btn:active {
+  transform: scale(1);
+}
+
+.text-center {
+  text-align: center;
+}
+/* Default: Show button */
+.view-more-container {
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* Hide button for mobile by default */
+@media (max-width: 768px) {
+  .view-more-container {
+    display: block; /* Show button in mobile */
+  }
+}
+
+/* Hide button for desktop */
+@media (min-width: 769px) {
+  .view-more-container {
+    display: block; /* Show button in desktop */
+  }
+}

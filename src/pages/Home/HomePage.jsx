@@ -5,8 +5,8 @@ import TermsModal from "../../components/TermsModal/TermsModal.jsx";
 import NewArrivals from "../../components/NewArrivals/NewArrivals.jsx";
 import ProductCard from "../../components/ProductCard/ProductCard.jsx";
 import HeroSection from "../../components/HeroSection/HeroSection.jsx";
-
-import { Link } from "react-router-dom";
+import RecentView from "../../components/RecentView/RecentView.jsx";
+import { Link, useNavigate } from "react-router-dom";
 
 const HomePage = () => {
   const [products, setProducts] = useState([]);
@@ -16,7 +16,8 @@ const HomePage = () => {
   const [newArrivals, setNewArrivals] = useState([]);
   const [activeCategory, setActiveCategory] = useState(null);
 
-  // Create refs for each category section
+  const navigate = useNavigate();
+
   const categoryRefs = {
     Clothing: useRef(null),
     Groceries: useRef(null),
@@ -29,11 +30,10 @@ const HomePage = () => {
     Kids: useRef(null),
     Service: useRef(null),
   };
-  const arrivals = products;
+
   useEffect(() => {
     const fetchProductsData = async () => {
       try {
-        // Simulated API response
         let data = [
           {
             id: 1,
@@ -282,6 +282,7 @@ const HomePage = () => {
           },
         ];
         setProducts(data);
+        setNewArrivals(data.slice(0, 10));
         setLoading(false);
       } catch (err) {
         setError("Failed to load products!");
@@ -295,13 +296,18 @@ const HomePage = () => {
   const openTermsModal = () => setModalOpen(true);
   const closeTermsModal = () => setModalOpen(false);
 
-  // Handle category click
   const handleCategoryClick = (category) => {
     setActiveCategory(category);
-    categoryRefs[category].current.scrollIntoView({ behavior: "smooth" });
+    if (categoryRefs[category]?.current) {
+      categoryRefs[category].current.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
-  // Reusable function to render products for a given category
+  const handleViewMore = (category) => {
+    navigate(`/category/${encodeURIComponent(category)}`);
+  };
+
+
   const renderProductsByCategory = (category) => {
     const filteredProducts = products.filter(
       (product) => product.category?.toLowerCase() === category.toLowerCase()
@@ -310,34 +316,35 @@ const HomePage = () => {
     if (filteredProducts.length === 0) {
       return <p className="text-center">No {category} products available.</p>;
     }
-    console.log("filteredProducts", filteredProducts)
-    return filteredProducts.map((product) => (
-      <div className="product-card-wrapper" key={product.id}>
-        <ProductCard product={product} />
-      </div>
-    ));
+
+    return (
+      <>
+        {filteredProducts.length > 1 && (
+          <div className="view-more-container">
+            <button
+              className="view-more-btn"
+              onClick={() => handleViewMore(category)}
+            >
+              View More →
+            </button>
+          </div>
+        )}
+        <div className="products-scroll-container">
+          {filteredProducts.slice(0, 5).map((product) => (
+            <div className="product-card-wrapper" key={product.id}>
+              <ProductCard product={product} />
+            </div>
+          ))}
+        </div>
+      </>
+    );
   };
 
   return (
     <div className="homepage-container">
-      {/* Categories Section */}
-      <section
-        className="categories-section mt-5"
-        style={{ border: "1px solid white" }}
-      >
+      <section className="categories-section mt-5">
         <div className="categories-scroll-container">
-          {[
-            "Clothing",
-            "Groceries",
-            "Electronics",
-            "Mobiles",
-            "Gifts",
-            "Men",
-            "Women",
-            "Books",
-            "Kids",
-            "Service",
-          ].map((category, index) => (
+          {Object.keys(categoryRefs).map((category, index) => (
             <div
               className={`category-card ${activeCategory === category ? "active" : ""}`}
               key={index}
@@ -348,43 +355,36 @@ const HomePage = () => {
           ))}
         </div>
       </section>
+
       <HeroSection />
-
       <NewArrivals products={newArrivals} />
-      {/* Other Sections like Categories, New Arrivals, etc. */}
+      <RecentView products={newArrivals} />
 
-      {/* Category Sections */}
       {Object.keys(categoryRefs).map((category) => (
         <div className={`filter ${category}`} key={category}>
-          <section
-            className="products-section "
-            ref={categoryRefs[category]}
-          >
+          <section className="products-section" ref={categoryRefs[category]}>
             <h2 className="section-title mb-2 text-center">
               <i className="fas fa-tshirt text-warning"></i> {category}
             </h2>
-            <div className="products-scroll-container">
-              {loading ? (
-                <p className="text-center">Loading products...</p>
-              ) : error ? (
-                <p className="text-center text-danger">{error}</p>
-              ) : (
-                renderProductsByCategory(category)
-              )}
-            </div>
+            {loading ? (
+              <p className="text-center">Loading products...</p>
+            ) : error ? (
+              <p className="text-center text-danger">{error}</p>
+            ) : (
+              renderProductsByCategory(category)
+            )}
           </section>
         </div>
       ))}
 
-      {/* About Us Section */}
       <section className="about-us-section mt-5">
         <h2 className="section-title">
           <i className="fas fa-info-circle"></i> About Us
         </h2>
         <p>
-          We provide high-quality groceries and clothing at the best prices. Our
-          mission is to bring convenience and quality to your doorstep. Shop
-          with us for a seamless and enjoyable shopping experience.
+          We provide high-quality groceries and clothing at the best prices.
+          Our mission is to bring convenience and quality to your doorstep.
+          Shop with us for a seamless and enjoyable shopping experience.
         </p>
         <p>
           <a href="#!" onClick={openTermsModal} className="terms-link">
@@ -393,7 +393,6 @@ const HomePage = () => {
         </p>
       </section>
 
-      {/* Terms & Conditions Modal */}
       <TermsModal isOpen={isModalOpen} onClose={closeTermsModal} />
     </div>
   );
