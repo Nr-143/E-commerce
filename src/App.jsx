@@ -9,7 +9,10 @@ import NavbarComponent from "./components/NavBarComponent/NavbarComponent.jsx";
 import TermsModal from "./components/TermsModal/TermsModal.jsx";
 import SearchResults from "./pages/SearchResultPage/SearchResult.jsx";
 import Wishlist from "./pages/Wishlist/Wishlist.jsx";
-import CategoryPage from "./pages/Home/CategoryPage.jsx";  // Import this
+import CategoryPage from "./pages/Home/CategoryPage.jsx";
+import BarcodeScanner from "./components/BarcodeScanner/BarcodeScanner.jsx";
+import AccountSettings from "./components/AccountSettings/AccountSettings.jsx";
+import MultiStepForm from "./pages/AddProductPage/AddProductPage.jsx";
 
 
 
@@ -36,8 +39,12 @@ function App() {
         <Route path="/orders" element={<OrdersPage />} />
         <Route path="/TrackOrder" element={<TrackOrder />} />
         <Route path="/wishlist" element={<Wishlist />} />
-        <Route path="/category/:categoryId" element={<CategoryPage />} />  {/* ✅ FIXED ROUTE */}
+        <Route path="/category/:categoryId" element={<CategoryPage />} />
+        <Route path="/AccountSettings" element={<AccountSettings />} />
+        <Route path="/BarcodeScanner" element={<BarcodeScanner />} />
+        <Route path="/MultiStepForm" element={<MultiStepForm />} />
 
+        
 
       </Routes>
 

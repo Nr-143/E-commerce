@@ -10,7 +10,6 @@ const ProductCard = ({ product, addToCart, addToWishlist, wishlist }) => {
   const [timeLeft, setTimeLeft] = useState("");
   const [imageLoaded, setImageLoaded] = useState(false);
   const productImageRef = useRef(null);
-  console.log("product", product)
 
   useEffect(() => {
     setIsWishlisted(wishlist?.some((item) => item.id === product.id));

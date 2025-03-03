@@ -1,9 +1,22 @@
+/* Product Listing Container */
+.desktop-listing{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 columns */
+}
+.product-listing {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 columns */
+  gap: 20px; /* Space between cards */
+  padding: 20px;
+  max-width: 1200px; /* Optional: Limit the maximum width */
+  margin: 0 auto; /* Center the container */
+}
+
 /* Product Card */
 .product-card {
   width: 100%;
   max-width: 280px;
   height: 400px;
-  margin: 12px auto;
   border-radius: 12px;
   overflow: hidden;
   background-color: #F9F9F9;
@@ -87,9 +100,6 @@
   padding: 10px;
 }
 
-
-
-
 /* Wishlist Icon */
 .wishlist-icon {
   position: absolute;
@@ -100,8 +110,7 @@
   border-radius: 50%;
   padding: 6px;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-  z-index: 15; /* Ensure it's above the overlay */
-
+  z-index: 15;
 }
 
 .wishlist-heart {
@@ -124,21 +133,17 @@
   padding: 6px 12px;
   border-radius: 4px;
   color: white;
-  z-index: 15; /* Ensure it's above the overlay */
+  z-index: 15;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .discount-badge {
   background: linear-gradient(135deg, #FF3B30, #D7263D);
-    z-index: 15; /* Ensure it's above the overlay */
-
 }
 
 .timer-badge {
   top: 34px;
   background: linear-gradient(135deg, #058120, #D7263D);
-    z-index: 15; /* Ensure it's above the overlay */
-
 }
 
 /* Hover Overlay */
@@ -154,12 +159,23 @@
   visibility: hidden;
   transition: opacity 0.3s ease, visibility 0.3s ease, backdrop-filter 0.3s ease;
   backdrop-filter: blur(5px);
-  pointer-events: none; /* Prevents accidental clicks */
+  pointer-events: none;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
+
+.product-card:hover .hover-overlay {
+  opacity: 1;
+  visibility: visible;
+}
+
+.product-card:hover .btn {
+  display: block;
+}
+
+/* Buttons */
 .btn {
   flex: 1;
   padding: 8px;
@@ -168,17 +184,10 @@
   font-weight: bold;
   border: 1px solid black;
   transition: background-color 0.3s ease, transform 0.3s ease;
-  z-index: 15; /* Ensure it's above the overlay */
+  z-index: 15;
   position: relative;
 }
 
-.product-card:hover .hover-overlay {
-  opacity: 1;
-  visibility: visible;
-}
-.product-card:hover .btn {
-  display: block;
-}
 .btn-icon {
   margin-right: -1px;
   font-size: 16px;
@@ -205,11 +214,12 @@
   background-color: #D7263D;
   transform: scale(1.05);
 }
+
 /* Description */
 .description {
-  white-space: pre-wrap; /* Ensures line breaks are applied properly */
-  word-wrap: break-word; /* Breaks long words */
-  overflow-wrap: break-word; /* Ensures proper text wrapping */
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
   text-align: center;
   font-size: 14px;
   color: #555;
@@ -244,7 +254,17 @@
 }
 
 /* Responsive Design */
+@media (max-width: 1200px) {
+  .product-listing {
+    grid-template-columns: repeat(3, 1fr); /* 3 columns for medium screens */
+  }
+}
+
 @media (max-width: 768px) {
+  .product-listing {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns for tablets */
+  }
+
   .product-card {
     max-width: 100%;
     height: auto;
@@ -284,7 +304,7 @@
     padding: 10px;
     margin-top: 10px;
     border-top: 1px solid #e0e0e0;
-    pointer-events: auto; /* Enable clicks */
+    pointer-events: auto;
   }
 
   .description {
@@ -297,5 +317,11 @@
     flex-direction: column;
     text-align: center;
     gap: 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-listing {
+    grid-template-columns: repeat(1, 1fr); /* 1 column for mobile */
   }
 }

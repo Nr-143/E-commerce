@@ -1,0 +1,44 @@
+/* MultiStepForm.css */
+.multiStepForm {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.progressBar {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.progress {
+    flex: 1;
+    height: 5px;
+    background-color: #ccc;
+    margin: 0 5px;
+    border-radius: 5px;
+}
+
+.progress.active {
+    background-color: #007bff;
+}
+
+.navigationButtons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.navigationButtons button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.navigationButtons button:hover {
+    background-color: #0056b3;
+}

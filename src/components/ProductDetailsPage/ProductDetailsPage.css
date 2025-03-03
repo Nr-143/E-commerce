@@ -444,12 +444,13 @@ body {
   position: relative;
   /* padding: 20px; */
 }
-.offer-badge {
+.offer-badge1 {
   background-color: #ff6b35; /* Background color for the offer */
   color: white;
+  margin-left: -350px;
   font-size: 14px; /* Slightly larger text */
   font-weight: bold;
-  padding: 6px 12px; /* Adjust padding for better readability */
+  padding: 4px 1px; /* Adjust padding for better readability */
   border-radius: 8px; /* More rounded corners */
   display: flex; /* Flexbox to align content */
   justify-content: space-between; /* Space between offer text and countdown */
@@ -479,7 +480,7 @@ body {
 }
 /* Responsive for smaller screens */
 @media (max-width: 768px) {
-  .offer-badge {
+  .offer-badge1 {
     font-size: 12px; /* Adjust font size for mobile */
     padding: 4px 8px; /* Reduce padding on mobile */
     flex-direction: column; /* Stack the text vertically on smaller screens */

@@ -319,7 +319,7 @@ const ProductDetailsPage = () => {
               {productData.offerPercent > 0 ? (
                 <>
                   {/* Offer Badge */}
-                  <span className="offer-badge">
+                  <span className="offer-badge1">
                     -{productData.offerPercent}% OFF
                   </span>
 

@@ -43,8 +43,9 @@ const NavbarComponent = ({ cartItems = [] }) => {
               {cartItems.length > 0 && <Badge pill bg="danger" className="cart-badge">{cartItems.length}</Badge>}
             </Nav.Link>
             <Nav.Link as={Link} to="/wishlist" className="nav-item"><FaHeart size={18} /> Wishlist</Nav.Link>
-            <Nav.Link as={Link} to="/seller" className="nav-item"><FaStore size={18} /> Sell</Nav.Link>
-            <Nav.Link as={Link} to="/login" className="nav-item"><FaSignInAlt size={18} /> Account</Nav.Link>
+            <Nav.Link as={Link} to="/BarcodeScanner" className="nav-item"><FaStore size={18} /> Sell</Nav.Link>
+            <Nav.Link as={Link} to="/MultiStepForm" className="nav-item"><FaStore size={18} /> Add </Nav.Link>
+            <Nav.Link as={Link} to="/AccountSettings" className="nav-item"><FaSignInAlt size={18} /> Account</Nav.Link>
           </Nav>
         </Container>
       </Navbar>
@@ -78,7 +79,7 @@ const NavbarComponent = ({ cartItems = [] }) => {
             {cartItems.length > 0 && <Badge pill bg="danger" className="cart-badge">{cartItems.length}</Badge>}
           </Nav.Link>
           <Nav.Link as={Link} to="/wishlist" className="mobile-nav-item"><FaHeart size={22} /><div>Wishlist</div></Nav.Link>
-          <Nav.Link as={Link} to="/login" className="mobile-nav-item"><FaSignInAlt size={22} /><div>Account</div></Nav.Link>
+          <Nav.Link as={Link} to="/AccountSettings" className="mobile-nav-item"><FaSignInAlt size={22} /><div>Account</div></Nav.Link>
         </Nav>
       </div>
     </>
