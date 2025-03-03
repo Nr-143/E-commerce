@@ -51,10 +51,10 @@ const BarcodeInput = () => {
 
 
         try {
-            const response = await fetch("https://api.goose.ai/v1/engines/gpt-j-6b/completions", {
+            const response = await fetch("", {
                 method: "POST",
                 headers: {
-                    "Authorization": `Bearer sk-kzpTmWFHTmpukUHknS9OeWVWm7baZe8CtlpwHtrvgdM9R2Bw`,
+                    "Authorization": `Bearer `,
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify(requestBody),
